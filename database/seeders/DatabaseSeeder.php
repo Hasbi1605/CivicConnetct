@@ -76,7 +76,7 @@ class DatabaseSeeder extends Seeder
             'universitas' => 'Universitas Gadjah Mada',
             'bio' => 'Semester 5, tertarik di bidang AI ethics dan data privacy. Pernah magang di startup edtech.',
             'role' => 'mahasiswa',
-            'avatar' => '/images/avatars/sari.jpg',
+            'avatar' => '/images/avatars/bayu.jpg',
             'is_profile_complete' => true,
         ]);
 
@@ -88,7 +88,7 @@ class DatabaseSeeder extends Seeder
             'universitas' => 'Universitas Airlangga',
             'bio' => 'Peneliti muda bidang kesehatan mental kampus. Koordinator peer-counselor Unair. Penerima beasiswa KIP-K.',
             'role' => 'mahasiswa',
-            'avatar' => '/images/avatars/dina.jpg',
+            'avatar' => 'https://images.unsplash.com/photo-1580894732444-8ecded7900cd?w=200&h=200&fit=crop&crop=face',
             'is_profile_complete' => true,
         ]);
 
@@ -100,7 +100,7 @@ class DatabaseSeeder extends Seeder
             'universitas' => 'Universitas Padjadjaran',
             'bio' => 'Aktivis kesehatan mental kampus, co-founder UKM Peduli Jiwa. Volunteer hotline 119 ext 8.',
             'role' => 'mahasiswa',
-            'avatar' => '/images/avatars/bayu.jpg',
+            'avatar' => '/images/avatars/sari.jpg',
             'is_profile_complete' => true,
         ]);
 
@@ -112,7 +112,7 @@ class DatabaseSeeder extends Seeder
             'universitas' => 'Universitas Gadjah Mada',
             'bio' => 'Dosen dan konselor kampus, fokus pada wellbeing mahasiswa. Penulis riset tentang stigma kesehatan mental di Asia Tenggara.',
             'role' => 'mentor',
-            'avatar' => '/images/avatars/mega.jpg',
+            'avatar' => 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&fit=crop&crop=face',
             'is_profile_complete' => true,
         ]);
 
