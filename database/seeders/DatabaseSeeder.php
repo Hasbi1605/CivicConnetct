@@ -36,21 +36,23 @@ class DatabaseSeeder extends Seeder
             'email' => 'demo@civic.id',
             'password' => Hash::make('password'),
             'jurusan' => 'Ilmu Politik',
-            'universitas' => 'UI',
-            'bio' => 'Mahasiswa semester 7, fokus pada literasi digital dan kebijakan publik.',
+            'universitas' => 'Universitas Indonesia',
+            'bio' => 'Mahasiswa semester 7, fokus pada literasi digital dan kebijakan publik. Aktif di BEM sebagai Kepala Divisi Advokasi.',
             'role' => 'agent',
+            'avatar' => 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face',
             'is_profile_complete' => true,
         ]);
 
         // Create additional users
         $putri = User::create([
-            'name' => 'Putri Amalina',
+            'name' => 'Dr. Putri Amalina',
             'email' => 'putri@civic.id',
             'password' => Hash::make('password'),
-            'jurusan' => 'Dosen Komunikasi',
-            'universitas' => 'UGM',
-            'bio' => 'Dosen dan peneliti bidang komunikasi digital.',
+            'jurusan' => 'Komunikasi Digital',
+            'universitas' => 'Universitas Gadjah Mada',
+            'bio' => 'Dosen dan peneliti bidang komunikasi digital. Penulis buku "Literasi Media untuk Gen-Z". Pembimbing 12 skripsi tentang misinformasi.',
             'role' => 'mentor',
+            'avatar' => 'https://images.unsplash.com/photo-1594824476967-48c8b964e288?w=200&h=200&fit=crop&crop=face',
             'is_profile_complete' => true,
         ]);
 
@@ -58,20 +60,59 @@ class DatabaseSeeder extends Seeder
             'name' => 'Rizky Pratama',
             'email' => 'rizky@civic.id',
             'password' => Hash::make('password'),
-            'jurusan' => 'Mahasiswa Hukum',
-            'universitas' => 'UI',
-            'bio' => 'Aktif dalam riset kebijakan kesehatan.',
+            'jurusan' => 'Ilmu Hukum',
+            'universitas' => 'Universitas Indonesia',
+            'bio' => 'Mahasiswa semester 6 FH. Aktif dalam riset kebijakan kesehatan dan hak digital. Semifinalis MCC Piala MA 2025.',
             'role' => 'agent',
+            'avatar' => 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=face',
             'is_profile_complete' => true,
         ]);
 
         $sari = User::create([
-            'name' => 'Sari Dewi',
+            'name' => 'Sari Wulandari',
             'email' => 'sari@civic.id',
             'password' => Hash::make('password'),
             'jurusan' => 'Ilmu Komputer',
-            'universitas' => 'UGM',
+            'universitas' => 'Universitas Gadjah Mada',
+            'bio' => 'Semester 5, tertarik di bidang AI ethics dan data privacy. Pernah magang di startup edtech.',
             'role' => 'mahasiswa',
+            'avatar' => 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=face',
+            'is_profile_complete' => true,
+        ]);
+
+        $dina = User::create([
+            'name' => 'Dina Maharani',
+            'email' => 'dina@civic.id',
+            'password' => Hash::make('password'),
+            'jurusan' => 'Kesehatan Masyarakat',
+            'universitas' => 'Universitas Airlangga',
+            'bio' => 'Peneliti muda bidang kesehatan mental kampus. Koordinator peer-counselor Unair. Penerima beasiswa KIP-K.',
+            'role' => 'mahasiswa',
+            'avatar' => 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&h=200&fit=crop&crop=face',
+            'is_profile_complete' => true,
+        ]);
+
+        $bayu = User::create([
+            'name' => 'Bayu Setiawan',
+            'email' => 'bayu@civic.id',
+            'password' => Hash::make('password'),
+            'jurusan' => 'Psikologi',
+            'universitas' => 'Universitas Padjadjaran',
+            'bio' => 'Aktivis kesehatan mental kampus, co-founder UKM Peduli Jiwa. Volunteer hotline 119 ext 8.',
+            'role' => 'mahasiswa',
+            'avatar' => 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&h=200&fit=crop&crop=face',
+            'is_profile_complete' => true,
+        ]);
+
+        $mega = User::create([
+            'name' => 'Dr. Mega Kurniawati',
+            'email' => 'mega@civic.id',
+            'password' => Hash::make('password'),
+            'jurusan' => 'Psikologi Klinis',
+            'universitas' => 'Universitas Gadjah Mada',
+            'bio' => 'Dosen dan konselor kampus, fokus pada wellbeing mahasiswa. Penulis riset tentang stigma kesehatan mental di Asia Tenggara.',
+            'role' => 'mentor',
+            'avatar' => 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=200&fit=crop&crop=face',
             'is_profile_complete' => true,
         ]);
 
@@ -79,51 +120,69 @@ class DatabaseSeeder extends Seeder
         $post1 = Post::create([
             'user_id' => $putri->id,
             'category' => 'fact-check',
-            'body' => 'Analisis mahasiswa tentang "Kenaikan UKT 50%" sudah saya review. Terima kasih atas partisipasi aktif rekan-rekan mahasiswa. Informasi kenaikan UKT 50% tidak benar. Keputusan rektorat hanya penyesuaian biaya praktikum 5% untuk Fakultas Kedokteran.',
+            'body' => "FACT-CHECK: Kenaikan UKT 50% di Seluruh PTN\n\nKlaim yang beredar di WhatsApp menyebutkan kenaikan UKT 50% berlaku untuk seluruh Perguruan Tinggi Negeri. Setelah melakukan verifikasi mendalam, berikut temuan kami:\n\nKLAIM: TIDAK BENAR\n\nFakta sebenarnya:\n- Keputusan Rektor hanya berupa penyesuaian biaya praktikum 5% untuk Fakultas Kedokteran\n- Berlaku mulai semester genap 2026/2027\n- Tidak berlaku untuk fakultas lain\n\nTabel Perbandingan:\n\n| Komponen | Sebelum | Sesudah | Selisih |\n|----------|---------|---------|--------|\n| UKT Kelompok 1 | Rp 500.000 | Rp 500.000 | 0% |\n| UKT Kelompok 5 | Rp 7.500.000 | Rp 7.500.000 | 0% |\n| Biaya Praktikum FK | Rp 2.000.000 | Rp 2.100.000 | +5% |\n\nMetodologi verifikasi:\n1. Cross-check SK Rektor No. 123/2026\n2. Konfirmasi langsung ke Biro Keuangan UI\n3. Perbandingan dengan data PDDIKTI",
+            'image' => 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&h=400&fit=crop',
             'citations' => [
-                ['text' => 'Surat Keputusan Rektor No. 123/2026 tentang Penyesuaian Biaya Praktikum', 'url' => 'https://ui.ac.id/sk-rektor/123-2026'],
+                ['text' => 'Surat Keputusan Rektor UI No. 123/2026', 'url' => 'https://ui.ac.id/sk-rektor/123-2026'],
+                ['text' => 'Data PDDIKTI Komponen Biaya Kuliah PTN 2026', 'url' => 'https://pddikti.kemdikbud.go.id'],
                 ['text' => 'Laporan Komisi X DPR RI tentang Kebijakan UKT 2026', 'url' => 'https://dpr.go.id/laporan/komisi-x/ukt-2026'],
             ],
             'status' => 'approved',
             'reviewed_by' => $ahmad->id,
-            'reviewed_at' => now()->subHours(5),
+            'reviewed_at' => now()->subHours(8),
+            'created_at' => now()->subHours(12),
         ]);
 
         $post2 = Post::create([
             'user_id' => $rizky->id,
             'category' => 'artikel',
-            'body' => 'Bedah Pasal RUU Kesehatan vs Narasi yang Viral di WA. Setelah riset kolaboratif di L.A.B Room, kami menemukan beberapa poin penting dalam Analisis Pasal 154 Ayat 3 RUU Kesehatan.',
+            'body' => "Bedah Pasal RUU Kesehatan vs Narasi Viral di WhatsApp\n\nSetelah riset kolaboratif di L.A.B Room selama 2 minggu, tim kami menemukan beberapa poin krusial dalam Pasal 154 Ayat 3 RUU Kesehatan yang sering disalahartikan.\n\nTemuan Utama:\n\n1. Klaim viral: Dokter bisa dipenjara jika pasien meninggal\nFakta: Pasal hanya mengatur gross negligence, bukan kesalahan medis biasa. Ada mekanisme mediasi sebelum jalur pidana.\n\n2. Klaim viral: Obat tradisional akan dilarang\nFakta: RUU justru mengakui pengobatan tradisional (Pasal 89-92) dengan syarat registrasi dan uji keamanan.\n\n3. Klaim viral: BPJS akan dihapus\nFakta: Tidak ada pasal yang menyebutkan penghapusan BPJS. Yang berubah adalah mekanisme klaim.\n\nDiagram Alur Mediasi Medis (RUU Kesehatan):\nKejadian Medis > Pengaduan > Mediasi MKEK > Jika gagal > Pengadilan\n\nRekomendasi:\nMasyarakat perlu membaca langsung draf RUU, bukan hanya mengandalkan ringkasan dari media sosial yang sering misleading.",
+            'image' => 'https://images.unsplash.com/photo-1589994965851-a8f479c573a9?w=800&h=400&fit=crop',
             'citations' => [
-                ['text' => 'RUU Kesehatan Pasal 154 Ayat 3 - DPR RI', 'url' => 'https://dpr.go.id/ruu-kesehatan/pasal-154'],
+                ['text' => 'RUU Kesehatan Pasal 154 Ayat 3 DPR RI', 'url' => 'https://dpr.go.id/ruu-kesehatan/pasal-154'],
+                ['text' => 'Naskah Akademik RUU Kesehatan 2026', 'url' => 'https://dpr.go.id/naskah-akademik/ruu-kesehatan'],
             ],
             'status' => 'approved',
             'reviewed_by' => $ahmad->id,
-            'reviewed_at' => now()->subHours(3),
+            'reviewed_at' => now()->subHours(5),
+            'created_at' => now()->subHours(10),
         ]);
 
         $post3 = Post::create([
             'user_id' => $sari->id,
             'category' => 'fact-check',
-            'body' => 'Benarkah vaksin COVID-19 menyebabkan efek samping jangka panjang? Setelah membaca beberapa jurnal ilmiah, berikut temuan kami tentang klaim yang beredar di media sosial.',
+            'body' => "FACT-CHECK: Vaksin COVID-19 dan Efek Samping Jangka Panjang\n\nBeberapa pesan berantai di WhatsApp mengklaim bahwa vaksin COVID-19 menyebabkan kerusakan DNA permanen dan infertilitas. Kami melakukan review terhadap 15 jurnal ilmiah peer-reviewed.\n\nHasil Verifikasi:\n\n| Klaim | Status | Sumber |\n|-------|--------|--------|\n| Kerusakan DNA | Hoaks | Nature Medicine, 2024 |\n| Infertilitas | Hoaks | The Lancet, 2025 |\n| Myocarditis ringan | Sangat langka (1:100.000) | NEJM, 2024 |\n| Efektifitas menurun | Fakta | WHO Weekly Report |\n\nKesimpulan: Klaim efek samping serius tidak didukung bukti ilmiah. Efek samping ringan (demam, nyeri) normal terjadi dan menandakan respons imun bekerja.",
+            'image' => 'https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?w=800&h=400&fit=crop',
+            'citations' => [
+                ['text' => 'Long-term safety of COVID-19 vaccines Nature Medicine 2024', 'url' => 'https://nature.com/articles/s41591-024'],
+                ['text' => 'COVID-19 vaccine and fertility The Lancet 2025', 'url' => 'https://thelancet.com/journals/lancet/article/2025'],
+            ],
             'status' => 'approved',
             'reviewed_by' => $rizky->id,
-            'reviewed_at' => now()->subHours(2),
+            'reviewed_at' => now()->subHours(3),
+            'created_at' => now()->subHours(8),
         ]);
 
         $post4 = Post::create([
             'user_id' => $ahmad->id,
             'category' => 'artikel',
-            'body' => 'Debat Mahasiswa Nasional 2026 akan diselenggarakan bulan depan. Siapa yang siap berpartisipasi? Mari kita diskusikan persiapannya.',
+            'body' => "Dampak AI Generatif terhadap Integritas Akademik: Survei 500 Mahasiswa\n\nSebagai mahasiswa Ilmu Komputer, saya melakukan survei terhadap 500 mahasiswa di 10 universitas Indonesia tentang penggunaan AI generatif (ChatGPT, Gemini, dll) dalam tugas kuliah.\n\nHasil Survei:\n\n| Pertanyaan | Ya | Tidak |\n|-----------|-----|-------|\n| Pernah pakai AI untuk tugas | 78% | 22% |\n| Kampus punya kebijakan AI | 23% | 77% |\n| Tahu batasan penggunaan AI | 31% | 69% |\n| Setuju AI boleh dipakai dengan aturan | 85% | 15% |\n\nTemuan Kunci:\n1. 78% mahasiswa sudah menggunakan AI generatif, tapi 77% kampus belum punya kebijakan yang jelas\n2. Gap literasi: mahasiswa STEM lebih paham batasan AI (52%) vs non-STEM (18%)\n3. 85% setuju AI boleh digunakan dengan aturan transparan\n\nRekomendasi untuk Kampus:\n- Buat panduan penggunaan AI yang jelas per mata kuliah\n- Integrasikan literasi AI di semester awal\n- Ubah format assessment dari hafalan ke analisis kritis",
+            'image' => 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=400&fit=crop',
+            'citations' => [
+                ['text' => 'Survei Penggunaan AI Generatif di Kalangan Mahasiswa Indonesia 2026', 'url' => 'https://doi.org/10.xxxx/ai-akademik-2026'],
+                ['text' => 'UNESCO Guidelines on AI in Education 2025', 'url' => 'https://unesco.org/ai-education-guidelines'],
+            ],
             'status' => 'approved',
             'reviewed_by' => $rizky->id,
-            'reviewed_at' => now()->subHours(1),
+            'reviewed_at' => now()->subHours(2),
+            'created_at' => now()->subHours(6),
         ]);
 
         // Create a pending post (waiting for review)
         $postPending = Post::create([
             'user_id' => $sari->id,
             'category' => 'fact-check',
-            'body' => 'Apakah benar pemerintah akan menghapus subsidi BBM? Ini perlu dicek faktanya karena banyak beredar di media sosial.',
+            'body' => "Cek Fakta: Pemerintah Akan Menghapus Subsidi BBM Mulai Juli 2026\n\nInformasi ini viral di Facebook dan Twitter. Perlu verifikasi dari sumber resmi Kementerian ESDM dan Kementerian Keuangan.\n\nSaya sudah mulai mengumpulkan data:\n- Pernyataan resmi Menteri ESDM (belum ditemukan)\n- APBN 2026 masih mencantumkan alokasi subsidi energi\n- Berita asli bersumber dari blog tidak terverifikasi\n\nMenunggu review dari agent/mentor untuk publikasi.",
             'status' => 'pending',
         ]);
 
@@ -131,106 +190,192 @@ class DatabaseSeeder extends Seeder
         $postRejected = Post::create([
             'user_id' => $sari->id,
             'category' => 'artikel',
-            'body' => 'Postingan ini berisi opini tanpa sumber yang jelas tentang kebijakan pendidikan.',
+            'body' => 'Kebijakan pendidikan Indonesia memang selalu bermasalah, semua menteri pendidikan tidak kompeten dan hanya mementingkan golongan sendiri.',
             'status' => 'rejected',
-            'rejection_reason' => 'Postingan tidak menyertakan sumber atau referensi yang valid. Silakan tambahkan referensi dan kirim ulang.',
+            'rejection_reason' => 'Postingan mengandung opini subjektif tanpa data atau referensi yang valid. Mohon sertakan sumber dan data pendukung, serta hindari generalisasi. Silakan perbaiki dan submit ulang.',
             'reviewed_by' => $ahmad->id,
-            'reviewed_at' => now()->subHours(6),
+            'reviewed_at' => now()->subHours(10),
+            'created_at' => now()->subHours(14),
+        ]);
+
+        // Post 5: Artikel sosial — Kesehatan Mental (by Bayu)
+        $post5 = Post::create([
+            'user_id' => $bayu->id,
+            'category' => 'artikel',
+            'body' => "Kenapa Mahasiswa Takut ke Psikolog Kampus? Data dan Solusi\n\nSebagai co-founder UKM Peduli Jiwa di Unpad, saya sering mendengar: Ngapain ke psikolog, ntar dikira gila. Stigma ini berbahaya.\n\nData Kesehatan Mental Mahasiswa Indonesia (Kemenkes, 2025):\n\n| Indikator | Persentase |\n|-----------|------------|\n| Kecemasan sedang-berat | 38% |\n| Gejala depresi | 24% |\n| Pernah ada pikiran bunuh diri | 12% |\n| Mengakses konseling kampus | 8% |\n| Malu mencari bantuan | 67% |\n\nGap antara kebutuhan (38%) dan utilisasi (8%) sangat mengkhawatirkan.\n\n3 Alasan Utama Mahasiswa Tidak Mencari Bantuan:\n1. Stigma sosial (67%) - takut dicap lemah atau gila\n2. Tidak tahu layanan ada (54%) - sosialisasi kampus kurang\n3. Waktu dan akses (42%) - jam konseling bentrok kuliah\n\nSolusi yang Sudah Kami Lakukan di Unpad:\n- Peer-counseling: mahasiswa bicara ke mahasiswa terlatih\n- Mental Health Monday: sharing session santai di kantin\n- Hotline anonim via chat 24/7\n\nHasilnya? Akses konseling naik 35% dalam 6 bulan.\n\nKalau kampus kamu belum punya program serupa, DM saya. Kita bikin bareng!",
+            'image' => 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&h=400&fit=crop',
+            'citations' => [
+                ['text' => 'Survei Nasional Kesehatan Mental Mahasiswa 2025 Kemenkes', 'url' => 'https://kemkes.go.id/survei-kesehatan-mental-2025'],
+                ['text' => 'Stigma Kesehatan Mental di Kalangan Mahasiswa Jurnal UGM', 'url' => 'https://jurnal.ugm.ac.id/psikologi/stigma'],
+            ],
+            'status' => 'approved',
+            'reviewed_by' => $ahmad->id,
+            'reviewed_at' => now()->subHour(),
+            'created_at' => now()->subHours(4),
         ]);
 
         // Add votes to fact-check posts
         Vote::create(['user_id' => $ahmad->id, 'post_id' => $post1->id, 'vote' => 'hoaks']);
         Vote::create(['user_id' => $rizky->id, 'post_id' => $post1->id, 'vote' => 'hoaks']);
         Vote::create(['user_id' => $sari->id, 'post_id' => $post1->id, 'vote' => 'hoaks']);
+        Vote::create(['user_id' => $dina->id, 'post_id' => $post1->id, 'vote' => 'hoaks']);
+        Vote::create(['user_id' => $bayu->id, 'post_id' => $post1->id, 'vote' => 'hoaks']);
 
         Vote::create(['user_id' => $ahmad->id, 'post_id' => $post3->id, 'vote' => 'hoaks']);
-        Vote::create(['user_id' => $putri->id, 'post_id' => $post3->id, 'vote' => 'fakta']);
+        Vote::create(['user_id' => $putri->id, 'post_id' => $post3->id, 'vote' => 'hoaks']);
         Vote::create(['user_id' => $rizky->id, 'post_id' => $post3->id, 'vote' => 'fakta']);
+        Vote::create(['user_id' => $sari->id, 'post_id' => $post3->id, 'vote' => 'hoaks']);
 
         // Add endorsements to artikel posts
         Endorsement::create(['user_id' => $ahmad->id, 'post_id' => $post2->id]);
         Endorsement::create(['user_id' => $sari->id, 'post_id' => $post2->id]);
+        Endorsement::create(['user_id' => $dina->id, 'post_id' => $post2->id]);
         Endorsement::create(['user_id' => $putri->id, 'post_id' => $post4->id]);
         Endorsement::create(['user_id' => $rizky->id, 'post_id' => $post4->id]);
-        Endorsement::create(['user_id' => $sari->id, 'post_id' => $post4->id]);
+        Endorsement::create(['user_id' => $ahmad->id, 'post_id' => $post4->id]);
+        Endorsement::create(['user_id' => $bayu->id, 'post_id' => $post4->id]);
+        Endorsement::create(['user_id' => $mega->id, 'post_id' => $post5->id]);
+        Endorsement::create(['user_id' => $dina->id, 'post_id' => $post5->id]);
+        Endorsement::create(['user_id' => $sari->id, 'post_id' => $post5->id]);
+        Endorsement::create(['user_id' => $ahmad->id, 'post_id' => $post5->id]);
+        Endorsement::create(['user_id' => $putri->id, 'post_id' => $post5->id]);
 
         // Add comments with top votes
         $c1 = Comment::create([
             'user_id' => $ahmad->id,
             'post_id' => $post1->id,
-            'body' => 'Terima kasih atas analisis yang detail, Bu Putri. Data SK Rektor yang dilampirkan sangat membantu klarifikasi.',
-            'created_at' => now()->subHours(4),
+            'body' => 'Terima kasih Bu Putri atas fact-check yang sangat detail ini. SK Rektor yang dilampirkan sangat membantu klarifikasi. Saya akan share ke grup mahasiswa agar hoaks ini berhenti menyebar.',
+            'created_at' => now()->subHours(7),
         ]);
         $c2 = Comment::create([
             'user_id' => $sari->id,
             'post_id' => $post1->id,
-            'body' => 'Saya sudah cek ke bagian keuangan kampus, memang benar hanya penyesuaian praktikum 5% untuk FK saja.',
-            'created_at' => now()->subHours(3),
+            'body' => 'Saya sudah konfirmasi langsung ke Biro Keuangan UI via email resmi. Memang benar hanya penyesuaian praktikum FK 5%. Tabel perbandingannya sangat clear.',
+            'created_at' => now()->subHours(6),
         ]);
         $c3 = Comment::create([
             'user_id' => $rizky->id,
             'post_id' => $post1->id,
-            'body' => 'Apakah ada rencana penyesuaian untuk fakultas lain juga?',
-            'created_at' => now()->subHours(2),
+            'body' => 'Yang menarik, hoaks semacam ini selalu muncul menjelang pembayaran UKT. Pattern-nya sudah bisa diprediksi. Apakah ada studi tentang timing penyebaran hoaks UKT?',
+            'created_at' => now()->subHours(5),
         ]);
-
-        // Replies to c1
+        // Reply to c3
         Comment::create([
             'user_id' => $putri->id,
             'post_id' => $post1->id,
+            'parent_id' => $c3->id,
+            'body' => 'Betul, Rizky. Di riset saya tahun lalu, 73% hoaks UKT muncul 2-4 minggu sebelum deadline pembayaran. Ini terkait anxiety kolektif mahasiswa yang dimanfaatkan untuk viral.',
+            'created_at' => now()->subHours(4)->subMinutes(30),
+        ]);
+        Comment::create([
+            'user_id' => $dina->id,
+            'post_id' => $post1->id,
             'parent_id' => $c1->id,
-            'body' => 'Sama-sama, Ahmad. Penting untuk selalu cross-check dengan dokumen resmi.',
-            'created_at' => now()->subHours(3)->subMinutes(30),
+            'body' => 'Setuju, seharusnya kampus proaktif bikin infografis resmi setiap ada kebijakan baru supaya hoaks tidak sempat menyebar.',
+            'created_at' => now()->subHours(4),
         ]);
 
-        // Top votes on comments (c2 gets most tops, will be first)
+        // Top votes on comments
         CommentTop::create(['user_id' => $ahmad->id, 'comment_id' => $c2->id]);
         CommentTop::create(['user_id' => $putri->id, 'comment_id' => $c2->id]);
         CommentTop::create(['user_id' => $rizky->id, 'comment_id' => $c2->id]);
+        CommentTop::create(['user_id' => $dina->id, 'comment_id' => $c2->id]);
         CommentTop::create(['user_id' => $ahmad->id, 'comment_id' => $c1->id]);
+        CommentTop::create(['user_id' => $sari->id, 'comment_id' => $c1->id]);
 
-        // Comments on post2 (artikel)
+        // Comments on post2 (RUU Kesehatan)
         $c4 = Comment::create([
             'user_id' => $putri->id,
             'post_id' => $post2->id,
-            'body' => 'Analisis yang sangat komprehensif. Bagian tentang Pasal 154 Ayat 3 sangat relevan dengan situasi saat ini.',
-            'created_at' => now()->subHours(2),
+            'body' => 'Analisis yang sangat komprehensif, Rizky! Bagian tentang mekanisme mediasi MKEK sangat penting. Banyak orang langsung skip ke dokter dipenjara tanpa baca alur lengkapnya.',
+            'created_at' => now()->subHours(4),
+        ]);
+        Comment::create([
+            'user_id' => $dina->id,
+            'post_id' => $post2->id,
+            'body' => 'Dari perspektif kesehatan masyarakat, Pasal 89-92 tentang pengobatan tradisional justru progressif. Banyak yang tidak tahu ini ada di RUU.',
+            'created_at' => now()->subHours(3),
         ]);
         Comment::create([
             'user_id' => $ahmad->id,
             'post_id' => $post2->id,
-            'body' => 'Setuju dengan analisis ini. Perlu sosialisasi lebih luas ke masyarakat.',
-            'created_at' => now()->subHours(1),
+            'body' => 'Bagus sekali hasil riset L.A.B Room-nya! Ini bukti bahwa kolaborasi lintas disiplin efektif untuk menghasilkan analisis yang balanced.',
+            'created_at' => now()->subHours(2),
         ]);
-        CommentTop::create(['user_id' => $sari->id, 'comment_id' => $c4->id]);
         CommentTop::create(['user_id' => $rizky->id, 'comment_id' => $c4->id]);
+        CommentTop::create(['user_id' => $sari->id, 'comment_id' => $c4->id]);
+        CommentTop::create(['user_id' => $ahmad->id, 'comment_id' => $c4->id]);
+
+        // Comments on post4 (AI survey)
+        Comment::create([
+            'user_id' => $mega->id,
+            'post_id' => $post4->id,
+            'body' => 'Survey yang sangat relevan! Angka 77% kampus belum punya kebijakan AI itu mengkhawatirkan. Di UGM kami baru mulai draft panduan semester ini.',
+            'created_at' => now()->subHours(1)->subMinutes(30),
+        ]);
+        Comment::create([
+            'user_id' => $bayu->id,
+            'post_id' => $post4->id,
+            'body' => 'Gap literasi STEM vs non-STEM (52% vs 18%) menarik. Ini harusnya jadi dasar kenapa literasi AI wajib di semua jurusan, bukan hanya teknik.',
+            'created_at' => now()->subHour(),
+        ]);
+
+        // Comments on post5 (kesehatan mental)
+        $c5 = Comment::create([
+            'user_id' => $mega->id,
+            'post_id' => $post5->id,
+            'body' => 'Bayu, data kamu sangat align dengan temuan kami di UGM. Pendekatan peer-counseling memang game changer. Kami mau adopt model Mental Health Monday kamu untuk dicoba di sini.',
+            'created_at' => now()->subMinutes(45),
+        ]);
+        Comment::create([
+            'user_id' => $dina->id,
+            'post_id' => $post5->id,
+            'body' => 'Di Unair kami juga baru mulai program serupa. Hambatan terbesar bukan budget, tapi melatih peer-counselor yang cukup. Ada tips untuk rekrutmen volunteer, Bay?',
+            'created_at' => now()->subMinutes(30),
+        ]);
+        Comment::create([
+            'user_id' => $bayu->id,
+            'post_id' => $post5->id,
+            'parent_id' => $c5->id,
+            'body' => 'Silakan Bu Mega! Kami sudah buat toolkit step-by-step-nya. DM saya nanti saya share materials-nya. Kolaborasi antar kampus buat ini sangat penting.',
+            'created_at' => now()->subMinutes(15),
+        ]);
+        CommentTop::create(['user_id' => $dina->id, 'comment_id' => $c5->id]);
+        CommentTop::create(['user_id' => $ahmad->id, 'comment_id' => $c5->id]);
+        CommentTop::create(['user_id' => $putri->id, 'comment_id' => $c5->id]);
 
         // Add a sample report
         Report::create([
-            'user_id' => $putri->id,
+            'user_id' => $dina->id,
             'post_id' => $post3->id,
-            'reason' => 'hoaks',
-            'description' => 'Informasi ini perlu verifikasi lebih lanjut dari sumber yang kredibel.',
+            'reason' => 'misleading',
+            'description' => 'Beberapa data tentang myocarditis perlu dikaji ulang karena studi terbaru menunjukkan angka yang sedikit berbeda.',
             'status' => 'pending',
         ]);
 
-        // Add notifications for the rejected post author (sari)
+        // Add notifications
         Notification::create([
             'user_id' => $sari->id,
             'post_id' => $postRejected->id,
             'type' => 'post_rejected',
             'title' => 'Postingan Ditolak',
-            'message' => 'Postingan Anda telah ditolak: Postingan tidak menyertakan sumber atau referensi yang valid.',
+            'message' => 'Postingan Anda ditolak: Mengandung opini subjektif tanpa data atau referensi. Silakan perbaiki.',
             'is_read' => false,
         ]);
-
-        // Notification for approved post
         Notification::create([
             'user_id' => $sari->id,
             'post_id' => $post3->id,
             'type' => 'post_approved',
             'title' => 'Postingan Disetujui',
-            'message' => 'Postingan fact-check Anda tentang vaksin COVID-19 telah disetujui dan dipublikasikan.',
+            'message' => 'Fact-check tentang vaksin COVID-19 telah disetujui dan dipublikasikan. Terima kasih atas kontribusinya!',
+            'is_read' => true,
+        ]);
+        Notification::create([
+            'user_id' => $bayu->id,
+            'post_id' => $post5->id,
+            'type' => 'post_approved',
+            'title' => 'Artikel Dipublikasikan',
+            'message' => 'Artikel kesehatan mental kamu sudah dipublikasikan dan mendapat respons positif!',
             'is_read' => true,
         ]);
 
@@ -380,41 +525,6 @@ class DatabaseSeeder extends Seeder
             'recommendation' => 'Rekomendasi akan ditambahkan setelah diskusi LAB Room.',
             'template_type' => 'standar',
             'status' => 'draft',
-        ]);
-
-        // ===== ADDITIONAL USERS FOR COMPLETED ROOM =====
-
-        $dina = User::create([
-            'name' => 'Dina Maharani',
-            'email' => 'dina@civic.id',
-            'password' => Hash::make('password'),
-            'jurusan' => 'Kesehatan Masyarakat',
-            'universitas' => 'Unair',
-            'bio' => 'Peneliti muda bidang kesehatan mental dan kebijakan kampus.',
-            'role' => 'mahasiswa',
-            'is_profile_complete' => true,
-        ]);
-
-        $bayu = User::create([
-            'name' => 'Bayu Setiawan',
-            'email' => 'bayu@civic.id',
-            'password' => Hash::make('password'),
-            'jurusan' => 'Psikologi',
-            'universitas' => 'Unpad',
-            'bio' => 'Aktivis kesehatan mental kampus, co-founder UKM Peduli Jiwa.',
-            'role' => 'mahasiswa',
-            'is_profile_complete' => true,
-        ]);
-
-        $mega = User::create([
-            'name' => 'Mega Kurniawati',
-            'email' => 'mega@civic.id',
-            'password' => Hash::make('password'),
-            'jurusan' => 'Dosen Psikologi Klinis',
-            'universitas' => 'UGM',
-            'bio' => 'Dosen dan konselor, fokus pada wellbeing mahasiswa.',
-            'role' => 'mentor',
-            'is_profile_complete' => true,
         ]);
 
         // ===== COMPLETED L.A.B ROOM: Kesehatan Mental Mahasiswa =====
