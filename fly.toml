@@ -1,7 +1,7 @@
 # Fly.io Configuration for Civic Connect Laravel
 # See https://fly.io/docs/reference/configuration/ for info
 
-app = "civic-connect"
+app = "civicconnetct"
 primary_region = "sin"  # Singapore - closest to Indonesia
 
 [build]
@@ -12,7 +12,7 @@ primary_region = "sin"  # Singapore - closest to Indonesia
   LOG_CHANNEL = "stderr"
   LOG_LEVEL = "error"
   DB_CONNECTION = "sqlite"
-  DB_DATABASE = "/data/database.sqlite"
+  DB_DATABASE = "/app/database/database.sqlite"
   SESSION_DRIVER = "database"
   CACHE_STORE = "database"
   QUEUE_CONNECTION = "database"
@@ -31,7 +31,3 @@ primary_region = "sin"  # Singapore - closest to Indonesia
   memory = "512mb"
   cpu_kind = "shared"
   cpus = 1
-
-[mounts]
-  source = "data"
-  destination = "/data"
