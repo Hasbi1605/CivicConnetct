@@ -39,7 +39,7 @@ class DatabaseSeeder extends Seeder
             'universitas' => 'Universitas Indonesia',
             'bio' => 'Mahasiswa semester 7, fokus pada literasi digital dan kebijakan publik. Aktif di BEM sebagai Kepala Divisi Advokasi.',
             'role' => 'agent',
-            'avatar' => 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face',
+            'avatar' => '/images/avatars/ahmad.png',
             'is_profile_complete' => true,
         ]);
 
@@ -52,7 +52,7 @@ class DatabaseSeeder extends Seeder
             'universitas' => 'Universitas Gadjah Mada',
             'bio' => 'Dosen dan peneliti bidang komunikasi digital. Penulis buku "Literasi Media untuk Gen-Z". Pembimbing 12 skripsi tentang misinformasi.',
             'role' => 'mentor',
-            'avatar' => 'https://images.unsplash.com/photo-1594824476967-48c8b964e288?w=200&h=200&fit=crop&crop=face',
+            'avatar' => '/images/avatars/putri.jpg',
             'is_profile_complete' => true,
         ]);
 
@@ -64,7 +64,7 @@ class DatabaseSeeder extends Seeder
             'universitas' => 'Universitas Indonesia',
             'bio' => 'Mahasiswa semester 6 FH. Aktif dalam riset kebijakan kesehatan dan hak digital. Semifinalis MCC Piala MA 2025.',
             'role' => 'agent',
-            'avatar' => 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=face',
+            'avatar' => '/images/avatars/rizky.png',
             'is_profile_complete' => true,
         ]);
 
@@ -76,7 +76,7 @@ class DatabaseSeeder extends Seeder
             'universitas' => 'Universitas Gadjah Mada',
             'bio' => 'Semester 5, tertarik di bidang AI ethics dan data privacy. Pernah magang di startup edtech.',
             'role' => 'mahasiswa',
-            'avatar' => 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=face',
+            'avatar' => '/images/avatars/sari.jpg',
             'is_profile_complete' => true,
         ]);
 
@@ -88,7 +88,7 @@ class DatabaseSeeder extends Seeder
             'universitas' => 'Universitas Airlangga',
             'bio' => 'Peneliti muda bidang kesehatan mental kampus. Koordinator peer-counselor Unair. Penerima beasiswa KIP-K.',
             'role' => 'mahasiswa',
-            'avatar' => 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&h=200&fit=crop&crop=face',
+            'avatar' => '/images/avatars/dina.jpg',
             'is_profile_complete' => true,
         ]);
 
@@ -100,7 +100,7 @@ class DatabaseSeeder extends Seeder
             'universitas' => 'Universitas Padjadjaran',
             'bio' => 'Aktivis kesehatan mental kampus, co-founder UKM Peduli Jiwa. Volunteer hotline 119 ext 8.',
             'role' => 'mahasiswa',
-            'avatar' => 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&h=200&fit=crop&crop=face',
+            'avatar' => '/images/avatars/bayu.jpg',
             'is_profile_complete' => true,
         ]);
 
@@ -112,7 +112,7 @@ class DatabaseSeeder extends Seeder
             'universitas' => 'Universitas Gadjah Mada',
             'bio' => 'Dosen dan konselor kampus, fokus pada wellbeing mahasiswa. Penulis riset tentang stigma kesehatan mental di Asia Tenggara.',
             'role' => 'mentor',
-            'avatar' => 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=200&fit=crop&crop=face',
+            'avatar' => '/images/avatars/mega.jpg',
             'is_profile_complete' => true,
         ]);
 
