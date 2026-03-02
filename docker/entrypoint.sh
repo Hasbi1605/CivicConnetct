@@ -4,15 +4,21 @@ set -e
 echo "🚀 Starting Civic Connect Laravel..."
 
 # ============================================================
-# 1. Ensure SQLite database exists on persistent volume
+# 1. Ensure SQLite database exists
 # ============================================================
-if [ ! -f /data/database.sqlite ]; then
-    echo "📦 Creating SQLite database..."
-    touch /data/database.sqlite
+# Use /data/ if volume is mounted, otherwise use /app/database/
+if [ -d /data ]; then
+    if [ ! -f /data/database.sqlite ]; then
+        echo "📦 Creating SQLite database on persistent volume..."
+        touch /data/database.sqlite
+    fi
+    ln -sf /data/database.sqlite /app/database/database.sqlite
+else
+    if [ ! -f /app/database/database.sqlite ]; then
+        echo "📦 Creating SQLite database..."
+        touch /app/database/database.sqlite
+    fi
 fi
-
-# Symlink so Laravel finds it at the expected path too
-ln -sf /data/database.sqlite /app/database/database.sqlite
 
 # ============================================================
 # 2. Ensure storage directories exist and are writable
