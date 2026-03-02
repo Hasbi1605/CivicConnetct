@@ -1,0 +1,121 @@
+@extends('layouts.fullwidth')
+
+@section('title', 'Policy Lab')
+
+@section('content')
+<div class="pb-gallery">
+    {{-- Header --}}
+    <div class="pb-gallery-header">
+        <div>
+            <h1 class="pb-gallery-title">Policy Lab</h1>
+            <p class="pb-gallery-subtitle">Repository naskah kebijakan berbasis data untuk perubahan nyata</p>
+        </div>
+        <a href="{{ route('policy-lab.create') }}" class="btn-primary">
+            <span class="material-symbols-outlined" style="font-size:18px">add</span> Buat Brief Baru
+        </a>
+    </div>
+
+    {{-- Template Cards --}}
+    <div class="pb-template-row">
+        <a href="{{ route('policy-lab.create', ['template' => 'standar']) }}" class="pb-template-card">
+            <span class="material-symbols-outlined pb-template-icon">description</span>
+            <h4>Policy Brief Standar</h4>
+            <p>Format lengkap dengan executive summary</p>
+        </a>
+        <a href="{{ route('policy-lab.create', ['template' => 'data-driven']) }}" class="pb-template-card">
+            <span class="material-symbols-outlined pb-template-icon">bar_chart</span>
+            <h4>Data-Driven Brief</h4>
+            <p>Fokus visualisasi data dan statistik</p>
+        </a>
+        <a href="{{ route('policy-lab.create', ['template' => 'quick-response']) }}" class="pb-template-card">
+            <span class="material-symbols-outlined pb-template-icon">bolt</span>
+            <h4>Quick Response</h4>
+            <p>Format ringkas untuk isu mendesak</p>
+        </a>
+    </div>
+
+    @if(session('success'))
+        <div class="alert alert-success">{{ session('success') }}</div>
+    @endif
+
+    {{-- Published Briefs --}}
+    <section class="pb-section">
+        <h2 class="pb-section-title">
+            <span class="material-symbols-outlined" style="font-size:22px">public</span>
+            Naskah Kebijakan Terpublikasi
+        </h2>
+
+        @if($publishedBriefs->count() > 0)
+        <div class="pb-grid">
+            @foreach($publishedBriefs as $brief)
+            <a href="{{ route('policy-lab.show', $brief) }}" class="pb-card card">
+                <div class="pb-card-top">
+                    <span class="pb-card-template">{{ $brief->templateLabel() }}</span>
+                    @if($brief->labRoom)
+                        <span class="pb-card-origin" title="Dari L.A.B Room">
+                            <span class="material-symbols-outlined" style="font-size:14px">science</span> LAB
+                        </span>
+                    @endif
+                </div>
+                <h3 class="pb-card-title">{{ $brief->title }}</h3>
+                <p class="pb-card-summary">{{ Str::limit($brief->summary, 120) }}</p>
+                <div class="pb-card-footer">
+                    <div class="pb-card-author">
+                        <img src="{{ $brief->author->avatar_url }}" alt="" class="pb-card-avatar">
+                        <span>{{ $brief->author->name }}</span>
+                    </div>
+                    <div class="pb-card-endorsement">
+                        <span class="material-symbols-outlined" style="font-size:16px">thumb_up</span>
+                        {{ $brief->endorsementCount() }}
+                    </div>
+                </div>
+            </a>
+            @endforeach
+        </div>
+        @else
+        <div class="pb-empty">
+            <span class="material-symbols-outlined">description</span>
+            <p>Belum ada naskah kebijakan terpublikasi. Jadilah yang pertama!</p>
+        </div>
+        @endif
+    </section>
+
+    {{-- My Briefs --}}
+    <section class="pb-section">
+        <h2 class="pb-section-title">
+            <span class="material-symbols-outlined" style="font-size:22px">folder_open</span>
+            Brief Saya
+        </h2>
+
+        @if($myBriefs->count() > 0)
+        <div class="pb-my-list">
+            @foreach($myBriefs as $brief)
+            <div class="pb-my-item card">
+                <div class="pb-my-status pb-status-{{ $brief->status }}">{{ $brief->statusLabel() }}</div>
+                <div class="pb-my-info">
+                    <h4>{{ $brief->title }}</h4>
+                    <p>Terakhir diedit: {{ $brief->updated_at->diffForHumans() }}</p>
+                </div>
+                <div class="pb-my-actions">
+                    @if($brief->isDraft() || $brief->isRejected())
+                    <a href="{{ route('policy-lab.edit', $brief) }}" class="btn-outline btn-sm">Edit</a>
+                    @endif
+                    @if($brief->isApproved())
+                    <a href="{{ route('policy-lab.show', $brief) }}" class="btn-primary btn-sm">Lihat</a>
+                    @endif
+                    @if($brief->isPending())
+                    <span class="pb-my-pending">Menunggu review agent...</span>
+                    @endif
+                </div>
+            </div>
+            @endforeach
+        </div>
+        @else
+        <div class="pb-empty">
+            <span class="material-symbols-outlined">edit_note</span>
+            <p>Anda belum membuat brief. Mulai dari template di atas!</p>
+        </div>
+        @endif
+    </section>
+</div>
+@endsection

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dasbor Antrean Penumpas Hoaks - CIVIC-Connect</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;600&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0F4C81",
+                        "primary-dark": "#0c3e6b",
+                        "background-light": "#F8F9FA",
+                        "background-dark": "#111a21",
+                        "surface": "#FFFFFF",
+                        "border-subtle": "#E2E8F0",
+                        "text-ink": "#1A1D1F",
+                        "text-slate": "#64748B",
+                        "status-green": "#10B981",
+                        "status-amber": "#F59E0B",
+                        "status-red": "#EF4444",
+                    },
+                    fontFamily: {
+                        "display": ["IBM Plex Serif", "serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "mono": ["JetBrains Mono", "monospace"],
+                    },
+                    borderRadius: {"DEFAULT": "2px", "sm": "2px", "md": "4px", "lg": "6px", "xl": "8px", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 3px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-body text-text-ink min-h-screen flex flex-col overflow-hidden">
+<header class="flex-none flex items-center justify-between border-b border-border-subtle bg-surface px-6 py-3 sticky top-0 z-50 h-16 shadow-sm">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-primary">
+<span class="material-symbols-outlined text-3xl">local_library</span>
+<h2 class="text-text-ink text-xl font-bold tracking-tight font-display">CIVIC-Connect</h2>
+</div>
+<div class="hidden md:flex items-center bg-background-light border border-border-subtle rounded-md h-9 w-80 px-3 gap-2 focus-within:ring-1 focus-within:ring-primary focus-within:border-primary transition-all">
+<span class="material-symbols-outlined text-text-slate text-[20px]">search</span>
+<input class="bg-transparent border-none p-0 text-sm w-full focus:ring-0 placeholder:text-text-slate" placeholder="Cari klaim, verifikasi, atau pengguna..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<nav class="hidden lg:flex items-center gap-6 text-sm font-medium text-text-slate">
+<a class="hover:text-primary transition-colors" href="#">Beranda</a>
+<a class="hover:text-primary transition-colors" href="#">L.A.B Composer</a>
+<a class="text-primary font-semibold flex items-center gap-1 bg-primary/5 px-3 py-1.5 rounded-md" href="#">
+                    Pusat Penumpas Hoaks
+                    <span class="bg-status-red text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full ml-1">12</span>
+</a>
+<a class="hover:text-primary transition-colors" href="#">Profil</a>
+</nav>
+<div class="h-9 w-9 rounded-full bg-cover bg-center border border-border-subtle cursor-pointer ring-2 ring-transparent hover:ring-primary/20 transition-all" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCYTJkWIzdgQKl5Giqi5wJK2NONe53kVDA-eVHEZuJV79aHbRjJTKloLkMxV8BYzdEr57uekEmuMMBgbUBrLsTJTr9iXgFT01ORhEwuJNZ_Bh_i07zVpG8IIgIGtfMtS79G_Rk7Qc6TwvXdrb9AiSHz4gNpwTtZ9o9GF5zEq92txY6QqdD-22s0ZkGNQRoOExM7N5WbnevAMwwsEBinXsGPOt2txxvHHNgiGOwAzL29SoSiyYyjpe6jq3rTF1IEsFu_CbC6U1MlX3o7');"></div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<aside class="w-full md:w-64 lg:w-72 bg-surface border-r border-border-subtle flex flex-col flex-none z-10 overflow-y-auto custom-scrollbar p-4">
+<div class="mb-8">
+<h3 class="text-xs font-bold text-text-slate uppercase tracking-wider mb-4 px-2">Filter Kategori</h3>
+<div class="space-y-1">
+<label class="flex items-center gap-3 p-2 hover:bg-background-light rounded cursor-pointer group">
+<input checked="" class="rounded border-border-subtle text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-sm font-medium text-text-ink group-hover:text-primary transition-colors">Semua Kategori</span>
+</label>
+<label class="flex items-center gap-3 p-2 hover:bg-background-light rounded cursor-pointer group">
+<input class="rounded border-border-subtle text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-sm font-medium text-text-ink group-hover:text-primary transition-colors">Politik &amp; Kebijakan</span>
+</label>
+<label class="flex items-center gap-3 p-2 hover:bg-background-light rounded cursor-pointer group">
+<input class="rounded border-border-subtle text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-sm font-medium text-text-ink group-hover:text-primary transition-colors">Kesehatan</span>
+</label>
+<label class="flex items-center gap-3 p-2 hover:bg-background-light rounded cursor-pointer group">
+<input class="rounded border-border-subtle text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-sm font-medium text-text-ink group-hover:text-primary transition-colors">Sains &amp; Teknologi</span>
+</label>
+<label class="flex items-center gap-3 p-2 hover:bg-background-light rounded cursor-pointer group">
+<input class="rounded border-border-subtle text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-sm font-medium text-text-ink group-hover:text-primary transition-colors">Sosial Budaya</span>
+</label>
+</div>
+</div>
+<div class="mb-8">
+<h3 class="text-xs font-bold text-text-slate uppercase tracking-wider mb-4 px-2">Status Verifikasi</h3>
+<div class="space-y-1">
+<a class="flex items-center justify-between p-2 bg-primary/5 text-primary rounded font-medium text-sm" href="#">
+<span>Menunggu Tinjauan</span>
+<span class="bg-primary text-white text-[10px] px-1.5 py-0.5 rounded-full">8</span>
+</a>
+<a class="flex items-center justify-between p-2 text-text-slate hover:bg-background-light hover:text-text-ink rounded font-medium text-sm transition-colors" href="#">
+<span>Sedang Berjalan</span>
+<span class="bg-slate-200 text-text-slate text-[10px] px-1.5 py-0.5 rounded-full">4</span>
+</a>
+<a class="flex items-center justify-between p-2 text-text-slate hover:bg-background-light hover:text-text-ink rounded font-medium text-sm transition-colors" href="#">
+<span>Selesai</span>
+<span class="bg-slate-200 text-text-slate text-[10px] px-1.5 py-0.5 rounded-full">126</span>
+</a>
+</div>
+</div>
+<div class="mt-auto border-t border-border-subtle pt-6">
+<h3 class="text-xs font-bold text-text-slate uppercase tracking-wider mb-4 px-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">leaderboard</span>
+                    Leaderboard Verifikator
+                </h3>
+<div class="space-y-3 px-2">
+<div class="flex items-center gap-3">
+<div class="relative">
+<div class="w-8 h-8 rounded-full bg-slate-200 border border-border-subtle flex items-center justify-center text-xs font-bold text-primary">DR</div>
+<div class="absolute -top-1 -right-1 bg-yellow-400 text-white w-3.5 h-3.5 flex items-center justify-center rounded-full text-[8px] border border-white">1</div>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-medium text-text-ink truncate">Dr. Ratna Sari</p>
+<p class="text-xs text-text-slate">1,240 Poin Validasi</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="relative">
+<div class="w-8 h-8 rounded-full bg-slate-200 border border-border-subtle flex items-center justify-center text-xs font-bold text-primary">BH</div>
+<div class="absolute -top-1 -right-1 bg-slate-400 text-white w-3.5 h-3.5 flex items-center justify-center rounded-full text-[8px] border border-white">2</div>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-medium text-text-ink truncate">Budi Hartono, M.Sc</p>
+<p class="text-xs text-text-slate">985 Poin Validasi</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="relative">
+<div class="w-8 h-8 rounded-full bg-slate-200 border border-border-subtle flex items-center justify-center text-xs font-bold text-primary">AG</div>
+<div class="absolute -top-1 -right-1 bg-orange-700 text-white w-3.5 h-3.5 flex items-center justify-center rounded-full text-[8px] border border-white">3</div>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-medium text-text-ink truncate">Prof. Agus Gunawan</p>
+<p class="text-xs text-text-slate">850 Poin Validasi</p>
+</div>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col h-full bg-background-light overflow-hidden">
+<div class="flex-none p-6 pb-2">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+<div class="bg-surface border border-border-subtle rounded-md p-5 shadow-sm flex items-center justify-between">
+<div>
+<p class="text-text-slate text-xs font-semibold uppercase tracking-wide mb-1">Total Klaim Terverifikasi</p>
+<h3 class="text-2xl font-bold text-text-ink font-display">2,845</h3>
+<div class="flex items-center gap-1 mt-1 text-xs text-status-green font-medium">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span>+12% bulan ini</span>
+</div>
+</div>
+<div class="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">verified_user</span>
+</div>
+</div>
+<div class="bg-surface border border-border-subtle rounded-md p-5 shadow-sm flex items-center justify-between">
+<div>
+<p class="text-text-slate text-xs font-semibold uppercase tracking-wide mb-1">Akurasi Komunitas</p>
+<h3 class="text-2xl font-bold text-text-ink font-display">94.8%</h3>
+<div class="flex items-center gap-1 mt-1 text-xs text-text-slate">
+<span>Konsensus tinggi</span>
+</div>
+</div>
+<div class="h-10 w-10 rounded-full bg-status-green/10 flex items-center justify-center text-status-green">
+<span class="material-symbols-outlined">flaky</span>
+</div>
+</div>
+<div class="bg-surface border border-border-subtle rounded-md p-5 shadow-sm flex items-center justify-between">
+<div>
+<p class="text-text-slate text-xs font-semibold uppercase tracking-wide mb-1">Kontribusi Saya</p>
+<h3 class="text-2xl font-bold text-text-ink font-display">42</h3>
+<div class="flex items-center gap-1 mt-1 text-xs text-primary font-medium cursor-pointer hover:underline">
+<span>Lihat riwayat</span>
+<span class="material-symbols-outlined text-[10px]">arrow_forward</span>
+</div>
+</div>
+<div class="h-10 w-10 rounded-full bg-status-amber/10 flex items-center justify-center text-status-amber">
+<span class="material-symbols-outlined">rate_review</span>
+</div>
+</div>
+</div>
+<div class="flex justify-between items-end mb-4">
+<div>
+<h1 class="text-2xl font-display font-semibold text-text-ink">Antrean Verifikasi</h1>
+<p class="text-sm text-text-slate mt-1">Daftar klaim yang membutuhkan keahlian akademik untuk verifikasi fakta.</p>
+</div>
+<div class="flex gap-2">
+<div class="bg-surface border border-border-subtle rounded px-3 py-1.5 flex items-center gap-2 cursor-pointer hover:bg-slate-50">
+<span class="text-xs font-medium text-text-slate">Urutkan:</span>
+<span class="text-sm font-semibold text-text-ink">Prioritas Tertinggi</span>
+<span class="material-symbols-outlined text-sm text-text-slate">expand_more</span>
+</div>
+</div>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto custom-scrollbar px-6 pb-6">
+<div class="space-y-4">
+<div class="bg-surface border-l-4 border-l-status-red border border-y-border-subtle border-r-border-subtle rounded-r-md p-5 shadow-sm hover:shadow-md transition-shadow relative group">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-2">
+<span class="bg-status-red/10 text-status-red text-[10px] font-bold px-2 py-0.5 rounded-sm uppercase tracking-wider border border-status-red/20">Prioritas Tinggi</span>
+<span class="bg-blue-100 text-blue-700 text-[10px] font-bold px-2 py-0.5 rounded-sm uppercase tracking-wider border border-blue-200">Teknologi</span>
+</div>
+<span class="text-xs font-mono text-text-slate">#HB-2023-892</span>
+</div>
+<div class="flex justify-between gap-6">
+<div class="flex-1">
+<h3 class="text-lg font-display font-semibold text-text-ink leading-snug mb-2 group-hover:text-primary transition-colors cursor-pointer">
+                                    "Universitas Indonesia menciptakan perangkat energi gratis dari limbah sungai Jakarta."
+                                </h3>
+<p class="text-sm text-text-slate line-clamp-2 mb-3">
+                                    Klaim viral di Twitter/X yang menyatakan bahwa mahasiswa UI menemukan solusi energi tanpa batas. Perlu verifikasi terkait hukum termodinamika dan bukti publikasi jurnal.
+                                </p>
+<div class="flex items-center gap-4 text-xs text-text-slate">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-status-red">flag</span>
+<span class="font-medium text-text-ink">45 Laporan</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+<span>Sisa waktu: <span class="font-mono font-medium text-status-red">14j 22m</span></span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">chat_bubble</span>
+<span>15 Komentar Ahli</span>
+</div>
+</div>
+</div>
+<div class="w-48 flex flex-col justify-between items-end border-l border-border-subtle pl-6">
+<div class="text-right w-full">
+<div class="text-[10px] text-text-slate uppercase font-bold mb-1">Sentimen Saat Ini</div>
+<div class="flex items-center justify-end gap-2 mb-1">
+<span class="text-sm font-bold text-text-ink">82% HOAKS</span>
+<div class="w-2 h-2 rounded-full bg-status-red"></div>
+</div>
+<div class="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-status-red" style="width: 82%"></div>
+</div>
+</div>
+<button class="mt-4 w-full bg-primary hover:bg-primary-dark text-white text-xs font-bold py-2 px-4 rounded transition-colors shadow-sm">
+                                    Verifikasi Sekarang
+                                </button>
+</div>
+</div>
+</div>
+<div class="bg-surface border border-border-subtle rounded-md p-5 shadow-sm hover:shadow-md transition-shadow relative group">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-2">
+<span class="bg-status-amber/10 text-status-amber text-[10px] font-bold px-2 py-0.5 rounded-sm uppercase tracking-wider border border-status-amber/20">Sedang Ditinjau</span>
+<span class="bg-green-100 text-green-700 text-[10px] font-bold px-2 py-0.5 rounded-sm uppercase tracking-wider border border-green-200">Kesehatan</span>
+</div>
+<span class="text-xs font-mono text-text-slate">#HB-2023-895</span>
+</div>
+<div class="flex justify-between gap-6">
+<div class="flex-1">
+<h3 class="text-lg font-display font-semibold text-text-ink leading-snug mb-2 group-hover:text-primary transition-colors cursor-pointer">
+                                    "Konsumsi air rebusan nanas dapat membunuh sel kanker stadium 4 tanpa kemoterapi."
+                                </h3>
+<p class="text-sm text-text-slate line-clamp-2 mb-3">
+                                    Pesan berantai WhatsApp yang mengklaim metode alternatif pengobatan kanker. Memerlukan tinjauan ahli onkologi dan referensi medis terpercaya.
+                                </p>
+<div class="flex items-center gap-4 text-xs text-text-slate">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">flag</span>
+<span class="font-medium text-text-ink">128 Laporan</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+<span>Sisa waktu: <span class="font-mono font-medium text-text-ink">2 Hari</span></span>
+</div>
+</div>
+</div>
+<div class="w-48 flex flex-col justify-between items-end border-l border-border-subtle pl-6">
+<div class="text-right w-full">
+<div class="text-[10px] text-text-slate uppercase font-bold mb-1">Sentimen Saat Ini</div>
+<div class="flex items-center justify-end gap-2 mb-1">
+<span class="text-sm font-bold text-text-ink">95% HOAKS</span>
+<div class="w-2 h-2 rounded-full bg-status-red"></div>
+</div>
+<div class="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-status-red" style="width: 95%"></div>
+</div>
+</div>
+<button class="mt-4 w-full border border-primary text-primary hover:bg-primary/5 text-xs font-bold py-2 px-4 rounded transition-colors">
+                                    Lihat Detail
+                                </button>
+</div>
+</div>
+</div>
+<div class="bg-surface border border-border-subtle rounded-md p-5 shadow-sm hover:shadow-md transition-shadow relative group">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-2">
+<span class="bg-slate-100 text-text-slate text-[10px] font-bold px-2 py-0.5 rounded-sm uppercase tracking-wider border border-slate-200">Menunggu Konsensus</span>
+<span class="bg-purple-100 text-purple-700 text-[10px] font-bold px-2 py-0.5 rounded-sm uppercase tracking-wider border border-purple-200">Politik</span>
+</div>
+<span class="text-xs font-mono text-text-slate">#HB-2023-891</span>
+</div>
+<div class="flex justify-between gap-6">
+<div class="flex-1">
+<h3 class="text-lg font-display font-semibold text-text-ink leading-snug mb-2 group-hover:text-primary transition-colors cursor-pointer">
+                                    "RUU baru mengusulkan pengawasan AI wajib di seluruh universitas negeri pada tahun 2025."
+                                </h3>
+<p class="text-sm text-text-slate line-clamp-2 mb-3">
+                                    Artikel blog yang membahas bocoran draf RUU Pendidikan Tinggi. Sumber tidak jelas namun mendapat traksi tinggi di kalangan akademisi.
+                                </p>
+<div class="flex items-center gap-4 text-xs text-text-slate">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">flag</span>
+<span class="font-medium text-text-ink">12 Laporan</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+<span>Sisa waktu: <span class="font-mono font-medium text-text-ink">5 Jam</span></span>
+</div>
+</div>
+</div>
+<div class="w-48 flex flex-col justify-between items-end border-l border-border-subtle pl-6">
+<div class="text-right w-full">
+<div class="text-[10px] text-text-slate uppercase font-bold mb-1">Sentimen Saat Ini</div>
+<div class="flex items-center justify-end gap-2 mb-1">
+<span class="text-sm font-bold text-text-ink">60% MENYESATKAN</span>
+<div class="w-2 h-2 rounded-full bg-status-amber"></div>
+</div>
+<div class="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden flex">
+<div class="h-full bg-status-red" style="width: 20%"></div>
+<div class="h-full bg-status-amber" style="width: 60%"></div>
+<div class="h-full bg-status-green" style="width: 20%"></div>
+</div>
+</div>
+<button class="mt-4 w-full border border-primary text-primary hover:bg-primary/5 text-xs font-bold py-2 px-4 rounded transition-colors">
+                                    Beri Suara
+                                </button>
+</div>
+</div>
+</div>
+<div class="bg-surface border border-border-subtle rounded-md p-5 shadow-sm hover:shadow-md transition-shadow relative group opacity-90 hover:opacity-100">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-2">
+<span class="bg-status-green/10 text-status-green text-[10px] font-bold px-2 py-0.5 rounded-sm uppercase tracking-wider border border-status-green/20">Hampir Selesai</span>
+<span class="bg-blue-100 text-blue-700 text-[10px] font-bold px-2 py-0.5 rounded-sm uppercase tracking-wider border border-blue-200">Teknologi</span>
+</div>
+<span class="text-xs font-mono text-text-slate">#HB-2023-888</span>
+</div>
+<div class="flex justify-between gap-6">
+<div class="flex-1">
+<h3 class="text-lg font-display font-semibold text-text-ink leading-snug mb-2 group-hover:text-primary transition-colors cursor-pointer">
+                                    "Baterai Air Garam di Jakarta sedang diuji coba untuk penerangan jalan umum."
+                                </h3>
+<p class="text-sm text-text-slate line-clamp-2 mb-3">
+                                    Klaim mengenai inovasi energi terbarukan lokal yang didukung oleh Pemprov DKI. Perlu verifikasi efisiensi dan skalabilitas.
+                                </p>
+<div class="flex items-center gap-4 text-xs text-text-slate">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">how_to_vote</span>
+<span class="font-medium text-text-ink">89 Suara</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+<span>Sisa waktu: <span class="font-mono font-medium text-text-slate">Ditutup</span></span>
+</div>
+</div>
+</div>
+<div class="w-48 flex flex-col justify-between items-end border-l border-border-subtle pl-6">
+<div class="text-right w-full">
+<div class="text-[10px] text-text-slate uppercase font-bold mb-1">Sentimen Saat Ini</div>
+<div class="flex items-center justify-end gap-2 mb-1">
+<span class="text-sm font-bold text-text-ink">92% VALID</span>
+<div class="w-2 h-2 rounded-full bg-status-green"></div>
+</div>
+<div class="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-status-green" style="width: 92%"></div>
+</div>
+</div>
+<button class="mt-4 w-full border border-border-subtle text-text-slate hover:bg-slate-50 text-xs font-bold py-2 px-4 rounded transition-colors" disabled="">
+                                    Lihat Hasil
+                                </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

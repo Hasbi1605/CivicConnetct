@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pembaca Risalah Kebijakan - CIVIC-Connect</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;600;700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0F4C81", // Trust Blue
+                        "background-light": "#F8F9FA", // Global background
+                        "background-dark": "#111a21", // Dark mode background fallback
+                        "surface": "#FFFFFF",
+                        "text-ink": "#1A1D1F",
+                        "text-muted": "#64748B",
+                        "border-color": "#E2E8F0",
+                        "verified": "#10B981",
+                        "alert": "#EF4444",
+                        "warning": "#F59E0B",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "serif": ["IBM Plex Serif", "serif"],
+                        "mono": ["JetBrains Mono", "monospace"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "2px",
+                        "sm": "2px",
+                        "md": "4px",
+                        "lg": "6px",
+                        "full": "9999px",
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-ink min-h-screen flex flex-col font-display antialiased">
+<header class="sticky top-0 z-50 bg-surface border-b border-border-color h-16 px-6 flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-4">
+<a class="flex items-center gap-2 text-text-muted hover:text-primary transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:-translate-x-1 transition-transform">arrow_back</span>
+<span class="text-sm font-medium">Kembali ke Repositori</span>
+</a>
+<div class="h-6 w-px bg-border-color mx-2"></div>
+<div class="flex flex-col">
+<h1 class="text-sm font-bold text-text-ink leading-tight">Risalah Kebijakan: Literasi Digital di Pedesaan Jawa</h1>
+<span class="text-xs text-text-muted">Risalah Final • Publikasi CIVIC-Connect</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="hidden md:flex items-center gap-2 px-3 py-1 bg-green-50 text-verified border border-green-200 rounded-md">
+<span class="material-symbols-outlined text-[16px] filled">check_circle</span>
+<span class="text-xs font-bold uppercase tracking-wide">Terverifikasi</span>
+</div>
+<div class="h-6 w-px bg-border-color mx-2"></div>
+<button class="flex items-center gap-2 px-3 py-2 bg-background-light hover:bg-slate-100 text-text-ink text-sm font-semibold rounded border border-border-color transition-colors">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span class="hidden sm:inline">Unduh PDF</span>
+</button>
+<button class="flex items-center gap-2 px-3 py-2 bg-primary hover:bg-[#0c3b65] text-white text-sm font-bold rounded shadow-sm transition-colors">
+<span class="material-symbols-outlined text-[18px]">share</span>
+<span>Bagikan</span>
+</button>
+</div>
+</header>
+<main class="flex flex-1 overflow-hidden h-[calc(100vh-64px)]">
+<div class="flex-1 overflow-y-auto bg-slate-50 relative flex justify-center py-8 px-4 sm:px-8">
+<article class="w-full max-w-[800px] bg-white shadow-sm border border-border-color min-h-[1000px] p-12 sm:p-16 mb-20">
+<div class="border-b border-border-color pb-8 mb-8">
+<div class="flex justify-between items-start mb-4">
+<span class="font-mono text-xs text-text-muted uppercase tracking-wider bg-slate-100 px-2 py-1 rounded">PB-2023-ID-042</span>
+<span class="font-mono text-xs text-text-muted">Dipublikasikan: 12 Okt 2023</span>
+</div>
+<h1 class="font-serif text-3xl sm:text-4xl font-bold text-text-ink leading-tight mb-4">
+                        Dampak Ekonomi Literasi Digital di Pedesaan Jawa
+                    </h1>
+<div class="flex items-center gap-2 text-sm text-text-muted mt-4">
+<span class="bg-blue-50 text-primary px-2 py-1 rounded text-xs font-semibold">EKONOMI DIGITAL</span>
+<span class="bg-slate-100 text-slate-600 px-2 py-1 rounded text-xs font-semibold">PEMBANGUNAN DESA</span>
+</div>
+</div>
+<div class="bg-slate-50 border-l-4 border-primary p-6 mb-10 rounded-r-sm">
+<div class="flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined text-primary text-[20px]">lightbulb</span>
+<h3 class="font-display text-sm font-bold uppercase tracking-wide text-primary">Poin Kunci</h3>
+</div>
+<p class="font-serif text-lg leading-relaxed text-slate-800 italic">
+                        Studi ini menemukan bahwa kurikulum "Desa Digital" meningkatkan pendapatan bulanan peserta sebesar 14%. Kami merekomendasikan standarisasi kurikulum nasional dan insentif bagi mahasiswa sebagai fasilitator digital.
+                    </p>
+</div>
+<section class="mb-12">
+<div class="flex items-center gap-3 mb-4">
+<span class="flex items-center justify-center w-8 h-8 rounded-full bg-slate-100 text-primary font-bold text-sm border border-slate-200">1</span>
+<h2 class="font-display text-xl font-bold text-text-ink">Ringkasan Masalah</h2>
+</div>
+<p class="font-serif text-[17px] leading-8 text-slate-800 mb-6">
+                        Kesenjangan digital di Indonesia tetap menjadi hambatan signifikan bagi pemerataan pembangunan ekonomi. Meskipun infrastruktur telah meningkat secara signifikan sejak 2019, "kesenjangan soft skill" masih ada. Studi ini berfokus pada implementasi Gerakan Nasional Literasi Digital (GNLD) di tingkat desa.
+                    </p>
+<p class="font-serif text-[17px] leading-8 text-slate-800 mb-6">
+                        Data yang dikumpulkan dari Badan Pusat Statistik (BPS) menunjukkan bahwa meskipun penetrasi internet mencapai 73,7% pada tahun 2022, pemanfaatannya untuk kegiatan ekonomi produktif masih di bawah 20% di klaster pedesaan. Kurangnya keterampilan praktis menghambat potensi ekonomi digital.
+                    </p>
+</section>
+<section class="mb-12">
+<div class="flex items-center gap-3 mb-4">
+<span class="flex items-center justify-center w-8 h-8 rounded-full bg-slate-100 text-primary font-bold text-sm border border-slate-200">2</span>
+<h2 class="font-display text-xl font-bold text-text-ink">Analisis &amp; Data</h2>
+</div>
+<p class="font-serif text-[17px] leading-8 text-slate-800 mb-6">
+                        Kami menggunakan uji acak terkendali (RCT) yang melibatkan 40 desa. Analisis menunjukkan korelasi positif yang kuat antara pelatihan terstruktur dan peningkatan pendapatan usaha mikro.
+                    </p>
+<figure class="my-8 border border-border-color rounded bg-slate-50 p-6">
+<div class="flex justify-between items-center mb-4 border-b border-border-color pb-3">
+<h4 class="font-display text-sm font-bold text-text-ink">Gambar 1: Tingkat Penetrasi vs Pemanfaatan Produktif</h4>
+</div>
+<div class="w-full h-64 bg-white border border-border-color rounded-sm mb-3 relative overflow-hidden group">
+<div class="absolute inset-0 flex items-end justify-around px-12 pb-8 pt-12 gap-8">
+<div class="flex flex-col items-center justify-end w-24 h-full group">
+<div class="w-full bg-blue-200 h-[73%] relative group-hover:bg-blue-300 transition-colors rounded-t-sm"></div>
+<span class="mt-2 text-xs font-mono text-slate-500">Penetrasi (73%)</span>
+</div>
+<div class="flex flex-col items-center justify-end w-24 h-full group">
+<div class="w-full bg-primary h-[20%] relative group-hover:bg-[#0c3b65] transition-colors rounded-t-sm"></div>
+<span class="mt-2 text-xs font-mono text-slate-500">Produktif (20%)</span>
+</div>
+</div>
+<div class="absolute inset-0 pointer-events-none border-t border-dashed border-slate-200 top-1/4"></div>
+<div class="absolute inset-0 pointer-events-none border-t border-dashed border-slate-200 top-2/4"></div>
+<div class="absolute inset-0 pointer-events-none border-t border-dashed border-slate-200 top-3/4"></div>
+</div>
+<figcaption class="text-xs text-text-muted mt-2 font-mono">
+                            Sumber: Survei Lapangan &amp; Laporan BPS 2023. Kesenjangan terlihat jelas antara akses dan penggunaan.
+                        </figcaption>
+</figure>
+<p class="font-serif text-[17px] leading-8 text-slate-800">
+                        Desa yang menerima intervensi menunjukkan peningkatan skor "Indeks Adopsi Digital" (DAI) sebesar 2.5 poin pada skala 10 poin dibandingkan kelompok kontrol.
+                    </p>
+</section>
+<section class="mb-12">
+<div class="flex items-center gap-3 mb-4">
+<span class="flex items-center justify-center w-8 h-8 rounded-full bg-slate-100 text-primary font-bold text-sm border border-slate-200">3</span>
+<h2 class="font-display text-xl font-bold text-text-ink">Rekomendasi Kebijakan</h2>
+</div>
+<div class="space-y-4">
+<div class="bg-blue-50/50 border border-blue-100 p-5 rounded-md">
+<h4 class="font-bold text-primary mb-2 text-base">A. Standarisasi Kurikulum</h4>
+<p class="font-serif text-slate-700 leading-relaxed">Kementerian harus mengadopsi modul yang digunakan dalam kelompok intervensi sebagai standar nasional untuk pelatihan literasi digital pedesaan.</p>
+</div>
+<div class="bg-blue-50/50 border border-blue-100 p-5 rounded-md">
+<h4 class="font-bold text-primary mb-2 text-base">B. Insentif Mentorship</h4>
+<p class="font-serif text-slate-700 leading-relaxed">Mahasiswa universitas lokal harus direkrut sebagai fasilitator digital melalui program KKN atau magang bersertifikat dengan insentif kredit akademik.</p>
+</div>
+<div class="bg-blue-50/50 border border-blue-100 p-5 rounded-md">
+<h4 class="font-bold text-primary mb-2 text-base">C. Subsidi Data Tertarget</h4>
+<p class="font-serif text-slate-700 leading-relaxed">Menyediakan subsidi internet yang ditargetkan khusus untuk usaha mikro yang baru terdigitalisasi selama 6 bulan pertama.</p>
+</div>
+</div>
+</section>
+<div class="mt-16 pt-8 border-t border-border-color">
+<p class="text-sm text-text-muted italic">Akhir dokumen. Terakhir diperbarui 12 Okt 2023.</p>
+</div>
+</article>
+<div class="fixed bottom-8 left-1/2 -translate-x-1/2 bg-surface border border-border-color shadow-lg rounded-full px-4 py-2 flex items-center gap-4 z-10">
+<button class="text-text-muted hover:text-primary p-1" title="Perkecil ukuran font">
+<span class="material-symbols-outlined text-[20px]">text_decrease</span>
+</button>
+<div class="w-px h-4 bg-border-color"></div>
+<button class="text-text-muted hover:text-primary p-1" title="Perbesar ukuran font">
+<span class="material-symbols-outlined text-[20px]">text_increase</span>
+</button>
+<div class="w-px h-4 bg-border-color"></div>
+<button class="text-text-muted hover:text-primary p-1" title="Ubah mode gelap">
+<span class="material-symbols-outlined text-[20px]">contrast</span>
+</button>
+</div>
+</div>
+<aside class="w-[360px] bg-white border-l border-border-color flex flex-col hidden lg:flex shadow-[-4px_0_15px_-3px_rgba(0,0,0,0.05)] z-20">
+<div class="p-6 border-b border-border-color bg-slate-50">
+<h3 class="text-xs font-bold text-text-muted uppercase tracking-wider mb-4">Tentang Penulis</h3>
+<div class="flex items-start gap-4 mb-4">
+<div class="w-12 h-12 rounded-full bg-gray-200 overflow-hidden flex-shrink-0 border border-gray-300">
+<img alt="Dr. Budi Santoso" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDthiVvoDWow4K1FD7B8QiCa2dE8JIGfn1UmL3YNjB5O9ZoK5OqRa-qqjvhdeWcumzWr7c5sg-vYTN0_O_ZWEHPq6DfttXEs9jTsT6oV96ZMtyfvE8tRWHPGbw3E_FtRNw0nK4wAMojC_tCtah1fyWLgrWvbxztukjXL32Tz6zoZa2yjuz21LaS58d6j_2yNH0AGTcb6vErh4iwHukU8m8cu-3_aAv9O9qNJdLYlmilaaHh5z2rcrXwbZtS85NUUK-6yIA1qFTnsj5E"/>
+</div>
+<div>
+<h4 class="font-bold text-text-ink text-sm">Dr. Budi Santoso</h4>
+<p class="text-xs text-text-muted mb-1">Peneliti Senior, Ekonomi Pembangunan</p>
+<div class="flex items-center gap-1 text-primary text-xs font-medium">
+<span>Universitas Indonesia</span>
+<span class="material-symbols-outlined text-[14px] text-verified">verified</span>
+</div>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="text-[10px] bg-white border border-border-color rounded px-2 py-1 text-text-muted font-mono">H-Index: 12</span>
+<span class="text-[10px] bg-white border border-border-color rounded px-2 py-1 text-text-muted font-mono">Publikasi: 45</span>
+</div>
+<button class="w-full bg-white hover:bg-slate-50 text-text-ink text-sm font-semibold py-2 px-4 rounded border border-border-color transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+                    Ikuti Penulis
+                </button>
+</div>
+<div class="p-6 border-b border-border-color">
+<div class="bg-blue-50 border border-blue-100 rounded-md p-4 mb-4">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary text-[20px]">groups</span>
+<span class="text-xs font-bold text-primary uppercase">Kolaborasi Ruang L.A.B</span>
+</div>
+<p class="text-xs text-text-ink mb-1 font-medium">Hasil dari:</p>
+<a class="text-sm font-bold text-primary hover:underline block mb-2" href="#">Room: Inovasi Pedesaan 2023</a>
+<p class="text-[11px] text-text-muted leading-tight">
+                        Dokumen ini disusun melalui kolaborasi intensif antara akademisi, praktisi lapangan, dan pembuat kebijakan lokal.
+                    </p>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto p-6">
+<h3 class="text-xs font-bold text-text-muted uppercase tracking-wider mb-4">Dukungan Komunitas</h3>
+<div class="flex items-center justify-between mb-2">
+<span class="text-2xl font-bold text-text-ink">128</span>
+<span class="text-sm text-text-muted">Endorsements</span>
+</div>
+<div class="w-full bg-slate-100 rounded-full h-2 mb-6">
+<div class="bg-verified h-2 rounded-full" style="width: 75%"></div>
+</div>
+<button class="w-full bg-verified hover:bg-green-600 text-white text-sm font-bold py-3 px-4 rounded shadow-md transition-colors flex items-center justify-center gap-2 mb-6 group">
+<span class="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform">thumb_up</span>
+                    Endorse Risalah Ini
+                </button>
+<h3 class="text-xs font-bold text-text-muted uppercase tracking-wider mb-4 mt-8">Afiliasi Institusi</h3>
+<div class="space-y-3">
+<div class="flex items-center gap-3 p-2 rounded hover:bg-slate-50 border border-transparent hover:border-slate-200 transition-colors">
+<div class="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center text-white font-serif font-bold text-xs shadow-sm">UI</div>
+<div>
+<p class="text-xs font-bold text-text-ink">Universitas Indonesia</p>
+<p class="text-[10px] text-text-muted">Institusi Penulis Utama</p>
+</div>
+</div>
+<div class="flex items-center gap-3 p-2 rounded hover:bg-slate-50 border border-transparent hover:border-slate-200 transition-colors">
+<div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-sans font-bold text-xs shadow-sm">UGM</div>
+<div>
+<p class="text-xs font-bold text-text-ink">Universitas Gadjah Mada</p>
+<p class="text-[10px] text-text-muted">Mitra Riset</p>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</main>
+
+</body></html>

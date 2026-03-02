@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Policy Lab: Bank Solusi Kebijakan</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=IBM+Plex+Serif:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0F4C81",
+                        "background-light": "#F8F9FA",
+                        "background-dark": "#111a21",
+                        "surface": "#FFFFFF",
+                        "text-ink": "#1A1D1F",
+                        "text-muted": "#64748B",
+                        "verified": "#10B981",
+                        "alert": "#EF4444",
+                        "warning": "#F59E0B",
+                        "border-subtle": "#E2E8F0"
+                    },
+                    fontFamily: {
+                        "sans": ["Inter", "sans-serif"],
+                        "serif": ["IBM Plex Serif", "serif"],
+                        "mono": ["JetBrains Mono", "monospace"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "2px",
+                        "sm": "2px",
+                        "md": "4px",
+                        "lg": "6px",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        "none": "none",
+                        "sm": "0 1px 2px 0 rgb(0 0 0 / 0.05)",
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+        .filled-icon {
+            font-variation-settings:
+            'FILL' 1,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-ink font-sans min-h-screen flex flex-col antialiased selection:bg-primary/20 selection:text-primary">
+<header class="sticky top-0 z-50 w-full bg-surface border-b border-border-subtle h-16 px-4 lg:px-6 flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-12 w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-3">
+<div class="size-8 bg-primary text-white flex items-center justify-center rounded-sm">
+<span class="material-symbols-outlined text-[20px]">balance</span>
+</div>
+<h1 class="text-primary font-serif font-bold text-xl tracking-tight">CIVIC-Connect</h1>
+</div>
+<div class="hidden md:flex flex-1 max-w-lg">
+<div class="relative w-full group">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-text-muted text-[20px]">search</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-2 border border-border-subtle rounded-sm leading-5 bg-background-light placeholder-text-muted focus:outline-none focus:bg-white focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition-colors" placeholder="Cari DOI, Topik, atau Risalah Kebijakan..." type="text"/>
+<div class="absolute inset-y-0 right-0 pr-2 flex items-center">
+<kbd class="hidden lg:inline-flex items-center border border-gray-200 rounded px-2 text-xs font-sans font-medium text-gray-400">⌘K</kbd>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="relative p-2 text-text-muted hover:text-primary transition-colors rounded-sm hover:bg-background-light group">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1.5 right-1.5 size-2 bg-alert rounded-full border border-white"></span>
+</button>
+<button class="p-2 text-text-muted hover:text-primary transition-colors rounded-sm hover:bg-background-light">
+<span class="material-symbols-outlined">mail</span>
+</button>
+<div class="h-8 w-px bg-border-subtle mx-1"></div>
+<div class="flex items-center gap-3 cursor-pointer hover:bg-background-light p-1.5 pr-3 rounded-sm transition-colors border border-transparent hover:border-border-subtle">
+<div class="size-8 bg-gray-200 rounded-sm overflow-hidden border border-border-subtle relative">
+<img alt="User avatar showing professional headshot of Dr. Budi Santoso" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuQgFr9_qEZ6anouA4-ThKcrCkf1Dx21ITxUExEhZX1DQ4Vnm7hhC7lmOoY0NPTDYaGtAwuwYvBjlHl5Mmec-JQi-VJY-jOo0SnggdP37tdx4dmoNgt-RGpyJPUrr6L8B3BXLLarKMROBevCuz9zLyLqQKpV9-COREwdsIGmzKAX0XZDc_PnL_EvZq_cmdpo3sRwTU2uyMoyckcZotoFoF0iNOR4MK2pTvunG7g0I3V215cOyQaqDvoOqXjkHjFTIyOXyMrOzzKSQ4"/>
+</div>
+<div class="hidden lg:block text-sm">
+<p class="font-semibold text-text-ink leading-none">Dr. Budi S.</p>
+<p class="text-xs text-text-muted mt-0.5">Universitas Indonesia</p>
+</div>
+<span class="material-symbols-outlined text-text-muted text-[18px]">expand_more</span>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-grow w-full max-w-7xl mx-auto px-4 lg:px-6 py-6">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+<aside class="hidden md:block md:col-span-3 sticky top-24 space-y-6">
+<div class="bg-surface border border-border-subtle rounded-sm p-5 shadow-sm">
+<div class="flex flex-col items-center text-center pb-5 border-b border-border-subtle">
+<div class="size-16 rounded-full p-0.5 border-2 border-primary mb-3">
+<img alt="Professional headshot of Dr. Budi Santoso" class="w-full h-full rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKbjjxKpS7R-1U3P4GumJ-yirQwvOyxg-7U9xWARs4K9vBkOKNh9X8hFzzeosO2A0TyUx4QSHj5sJC_sbKF2It2wdyEJLuhN0D0w0K0rYGe87DWykP08PcGSFOJGM5eZykG-c-tt0fWhZXiKInwVukmBXgPqlHbYymUBl2Je1lLnCWF8KmqW1XzBwBzeyDm_uLh5YKb1rUjKX44_nKtEDI8ophvHMvnlyndaDcZjb3kQYACVq3rlxpLw-mo3plWki1kVBL_ACFsrrq"/>
+</div>
+<h2 class="text-lg font-bold text-text-ink font-serif">Dr. Budi Santoso</h2>
+<div class="flex items-center gap-2 mt-1">
+<span class="px-2 py-0.5 bg-blue-50 text-primary text-xs font-medium border border-blue-100 rounded-sm">Dosen</span>
+<span class="text-xs text-text-muted">Ilmu Politik</span>
+</div>
+</div>
+<div class="py-5 flex justify-between items-center px-2">
+<div class="text-center">
+<div class="text-2xl font-bold font-serif text-text-ink">1.240</div>
+<div class="text-xs font-medium text-text-muted uppercase tracking-wider mt-1">Poin Sipil</div>
+</div>
+<div class="h-8 w-px bg-border-subtle"></div>
+<div class="text-center">
+<div class="text-2xl font-bold font-serif text-verified">98%</div>
+<div class="text-xs font-medium text-text-muted uppercase tracking-wider mt-1">Akurasi</div>
+</div>
+</div>
+<div class="pt-4 border-t border-border-subtle">
+<div class="flex items-center gap-2 text-xs text-text-muted">
+<span class="material-symbols-outlined text-[16px] text-verified">workspace_premium</span>
+<span>Kontributor Top 5%</span>
+</div>
+</div>
+</div>
+<nav class="bg-surface border border-border-subtle rounded-sm shadow-sm overflow-hidden">
+<a class="flex items-center gap-3 px-4 py-3 text-text-ink hover:bg-background-light hover:text-primary transition-colors text-sm border-l-4 border-transparent" href="#">
+<span class="material-symbols-outlined text-[20px]">home</span>
+                        Beranda
+                    </a>
+<a class="flex items-center gap-3 px-4 py-3 text-text-ink hover:bg-background-light hover:text-primary transition-colors text-sm border-l-4 border-transparent" href="#">
+<span class="material-symbols-outlined text-[20px]">article</span>
+                        Analisis Saya
+                    </a>
+<a class="flex items-center gap-3 px-4 py-3 text-text-ink hover:bg-background-light hover:text-primary transition-colors text-sm border-l-4 border-transparent" href="#">
+<span class="material-symbols-outlined text-[20px]">bookmark</span>
+                        Markah
+                    </a>
+<a class="flex items-center gap-3 px-4 py-3 bg-blue-50/50 border-l-4 border-primary text-primary font-medium text-sm" href="#">
+<span class="material-symbols-outlined filled-icon text-[20px]">policy</span>
+                        Risalah Kebijakan
+                    </a>
+<div class="border-t border-border-subtle mt-1 pt-1">
+<a class="flex items-center gap-3 px-4 py-3 text-text-ink hover:bg-background-light hover:text-primary transition-colors text-sm border-l-4 border-transparent" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+                            Pengaturan
+                        </a>
+</div>
+</nav>
+</aside>
+<section class="col-span-1 md:col-span-9 lg:col-span-9 space-y-6">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-surface p-6 rounded-sm border border-border-subtle shadow-sm">
+<div>
+<h2 class="text-2xl font-bold font-serif text-text-ink">Policy Lab: Bank Solusi Kebijakan</h2>
+<p class="text-text-muted mt-1 text-sm">Repositori publik risalah kebijakan mahasiswa untuk solusi nasional.</p>
+</div>
+<div class="flex gap-3">
+<button class="bg-white hover:bg-background-light text-text-ink border border-border-subtle px-4 py-2 rounded-sm text-sm font-medium flex items-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-[20px]">meeting_room</span>
+                            Buka L.A.B Room
+                        </button>
+<button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-sm text-sm font-bold flex items-center gap-2 shadow-sm transition-colors">
+<span class="material-symbols-outlined text-[20px]">add</span>
+                            Buat Risalah Baru
+                        </button>
+</div>
+</div>
+<div class="flex flex-col sm:flex-row justify-between items-center gap-4 bg-surface p-2 rounded-sm border border-border-subtle shadow-sm">
+<div class="flex gap-1 p-1 bg-background-light rounded-sm w-full sm:w-auto">
+<button class="px-3 py-1.5 text-xs font-semibold rounded-sm bg-white text-primary shadow-sm border border-border-subtle">Terbaru</button>
+<button class="px-3 py-1.5 text-xs font-semibold rounded-sm text-text-muted hover:text-text-ink hover:bg-white/50 transition-colors">Terpopuler</button>
+<button class="px-3 py-1.5 text-xs font-semibold rounded-sm text-text-muted hover:text-text-ink hover:bg-white/50 transition-colors">Disukai</button>
+</div>
+<div class="flex items-center gap-3 w-full sm:w-auto overflow-x-auto pb-1 sm:pb-0">
+<span class="text-xs font-medium text-text-muted uppercase tracking-wider shrink-0">Kategori:</span>
+<select class="form-select text-sm border-border-subtle rounded-sm py-1.5 px-3 bg-white text-text-ink focus:border-primary focus:ring-primary">
+<option>Semua Kategori</option>
+<option>Ekonomi</option>
+<option>Hukum</option>
+<option>Lingkungan</option>
+<option>Kesehatan</option>
+<option>Pendidikan</option>
+</select>
+<div class="h-6 w-px bg-border-subtle"></div>
+<button class="p-1.5 text-text-muted hover:text-primary rounded-sm hover:bg-background-light">
+<span class="material-symbols-outlined text-[20px]">filter_list</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<article class="bg-surface border border-border-subtle rounded-sm shadow-sm hover:shadow-md hover:border-primary/30 transition-all flex flex-col group h-full">
+<div class="p-5 flex-grow">
+<div class="flex justify-between items-start mb-3">
+<span class="px-2 py-0.5 bg-green-50 text-verified text-[10px] font-bold uppercase tracking-wide border border-green-100 rounded-sm">Lingkungan</span>
+<span class="text-xs text-text-muted">12 Okt 2024</span>
+</div>
+<h3 class="font-serif font-bold text-lg text-text-ink mb-2 leading-tight group-hover:text-primary transition-colors">
+<a href="#">Strategi Mitigasi Banjir Pesisir Jakarta Utara Berbasis Komunitas</a>
+</h3>
+<p class="text-text-muted text-sm line-clamp-3 mb-4">
+                                Usulan kerangka kerja adaptif yang melibatkan masyarakat lokal dalam pemeliharaan tanggul dan sistem peringatan dini, mengurangi kerugian ekonomi hingga 30%.
+                            </p>
+<div class="flex items-center gap-3 mt-auto">
+<div class="size-8 rounded-full overflow-hidden border border-border-subtle bg-gray-100">
+<img alt="Author Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXszWi6GKN2dkW7JeiHSbmZfskQj5d6zJaUT67e1zv5KKmkg2fxjPHoXktSID3_q4kcRjh4wUtQSzoQq5cI_MjHskkQ50hprEbrMypWtRP-ATXDhOjOk411FTm4hTDQpi73mfM1ac7wZELczwazysKxoDF4XIXfoME9vXqhERfI4uaXYId1W0S2RxeVvigu9AL-RjlBkCfTCc0eW9Qkn4kcwkRm_5GpP6cDUNaK7b02a_eAKfF7QLu7FKGaJvkjLxwqh_BvVwqELMI"/>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-medium text-text-ink truncate">Tim Riset Mahagana</p>
+<p class="text-xs text-text-muted truncate">Universitas Indonesia</p>
+</div>
+</div>
+</div>
+<div class="px-5 py-3 border-t border-border-subtle bg-background-light/30 flex justify-between items-center mt-auto">
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-1.5 text-text-muted group-hover:text-primary transition-colors" title="Endorsement">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span class="text-xs font-bold">24 Endorse</span>
+</div>
+<div class="flex items-center gap-1.5 text-text-muted">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+<span class="text-xs">1.2k</span>
+</div>
+</div>
+<button class="text-primary hover:bg-primary/10 p-1.5 rounded-sm transition-colors">
+<span class="material-symbols-outlined text-[20px]">download</span>
+</button>
+</div>
+</article>
+<article class="bg-surface border border-border-subtle rounded-sm shadow-sm hover:shadow-md hover:border-primary/30 transition-all flex flex-col group h-full">
+<div class="p-5 flex-grow">
+<div class="flex justify-between items-start mb-3">
+<span class="px-2 py-0.5 bg-blue-50 text-primary text-[10px] font-bold uppercase tracking-wide border border-blue-100 rounded-sm">Ekonomi</span>
+<span class="text-xs text-text-muted">10 Okt 2024</span>
+</div>
+<h3 class="font-serif font-bold text-lg text-text-ink mb-2 leading-tight group-hover:text-primary transition-colors">
+<a href="#">Insentif Fiskal untuk UMKM Digital di Kawasan Timur Indonesia</a>
+</h3>
+<p class="text-text-muted text-sm line-clamp-3 mb-4">
+                                Analisis dampak pemberian tax holiday 5 tahun bagi startup teknologi yang berbasis di luar Jawa, dengan fokus pada pemerataan ekonomi digital.
+                            </p>
+<div class="flex items-center gap-3 mt-auto">
+<div class="size-8 rounded-full overflow-hidden border border-border-subtle bg-gray-100">
+<img alt="Author Avatar 2" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_HR2CWpboMAhLHiGJ0rHAbpEwHUOlFDaiNpRhPGRUAjicpFuj7y4ab9hb-17UwvBNo1cvtQgOgnWDbf9QRcIpuH_FYXcr5DxTxoclu-JfYfhci7hvS-2W2mLkIVN_kHK7bOB7Pm97LFt8JEbJIwdjkYiJWmdmV53hpdfn11bnVuXWwTqdsTJfp3547_GmRcHCIBtQ4opJKT609MTrxeeOCfKC9mgj_vERJ1BlCuQe1t_f-GJMFS8XzqYJjpBGA3qii97DgT9KqMb3"/>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-medium text-text-ink truncate">Sarah &amp; Rekan</p>
+<p class="text-xs text-text-muted truncate">Universitas Gadjah Mada</p>
+</div>
+</div>
+</div>
+<div class="px-5 py-3 border-t border-border-subtle bg-background-light/30 flex justify-between items-center mt-auto">
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-1.5 text-text-muted group-hover:text-primary transition-colors" title="Endorsement">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span class="text-xs font-bold">45 Endorse</span>
+</div>
+<div class="flex items-center gap-1.5 text-text-muted">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+<span class="text-xs">2.8k</span>
+</div>
+</div>
+<button class="text-primary hover:bg-primary/10 p-1.5 rounded-sm transition-colors">
+<span class="material-symbols-outlined text-[20px]">download</span>
+</button>
+</div>
+</article>
+<article class="bg-surface border border-border-subtle rounded-sm shadow-sm hover:shadow-md hover:border-primary/30 transition-all flex flex-col group h-full">
+<div class="p-5 flex-grow">
+<div class="flex justify-between items-start mb-3">
+<span class="px-2 py-0.5 bg-yellow-50 text-warning text-[10px] font-bold uppercase tracking-wide border border-yellow-100 rounded-sm">Hukum</span>
+<span class="text-xs text-text-muted">08 Okt 2024</span>
+</div>
+<h3 class="font-serif font-bold text-lg text-text-ink mb-2 leading-tight group-hover:text-primary transition-colors">
+<a href="#">Reformasi Perlindungan Data Pribadi dalam Transaksi E-Commerce</a>
+</h3>
+<p class="text-text-muted text-sm line-clamp-3 mb-4">
+                                Tinjauan kritis terhadap UU PDP dan rekomendasi protokol keamanan standar bagi platform marketplace untuk mencegah kebocoran data konsumen.
+                            </p>
+<div class="flex items-center gap-3 mt-auto">
+<div class="size-8 rounded-full overflow-hidden border border-border-subtle bg-gray-100">
+<img alt="Author Avatar 3" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtNSnXUU8_PGj3ETrjGnAEM1vwJ39E-F7a3ZwpftOphZqUi02q3JdAvXxAjVme4LHblmv7GDo0fj-4Aj5OvBX9Of1XhatbrE_9BBQ7GppKP4uXD1YZF3NgGp4kkgpNVs3q07FuaTGXDDWzzxOZLioq0qMk0ZWF88GUz8K1CZH7bV3f6iiOtqhrta_JVEEIvHn53ZCcGse3myUXgIkdDZ1LxTXXxPA2m5lG_QJdZ63go5XHI870b0gvcNxBTCt6czvHRgUXomhuyLIM"/>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-medium text-text-ink truncate">Ahmad Fauzi</p>
+<p class="text-xs text-text-muted truncate">Universitas Airlangga</p>
+</div>
+</div>
+</div>
+<div class="px-5 py-3 border-t border-border-subtle bg-background-light/30 flex justify-between items-center mt-auto">
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-1.5 text-text-muted group-hover:text-primary transition-colors" title="Endorsement">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span class="text-xs font-bold">18 Endorse</span>
+</div>
+<div class="flex items-center gap-1.5 text-text-muted">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+<span class="text-xs">890</span>
+</div>
+</div>
+<button class="text-primary hover:bg-primary/10 p-1.5 rounded-sm transition-colors">
+<span class="material-symbols-outlined text-[20px]">download</span>
+</button>
+</div>
+</article>
+<article class="bg-surface border border-border-subtle rounded-sm shadow-sm hover:shadow-md hover:border-primary/30 transition-all flex flex-col group h-full">
+<div class="p-5 flex-grow">
+<div class="flex justify-between items-start mb-3">
+<span class="px-2 py-0.5 bg-purple-50 text-purple-700 text-[10px] font-bold uppercase tracking-wide border border-purple-100 rounded-sm">Pendidikan</span>
+<span class="text-xs text-text-muted">05 Okt 2024</span>
+</div>
+<h3 class="font-serif font-bold text-lg text-text-ink mb-2 leading-tight group-hover:text-primary transition-colors">
+<a href="#">Kurikulum Fleksibel: Solusi Kesenjangan Pendidikan di Daerah 3T</a>
+</h3>
+<p class="text-text-muted text-sm line-clamp-3 mb-4">
+                                Risalah kebijakan yang mengusulkan model pembelajaran hybrid asinkronus dengan dukungan satelit internet untuk sekolah terpencil.
+                            </p>
+<div class="flex items-center gap-3 mt-auto">
+<div class="size-8 rounded-full overflow-hidden border border-border-subtle bg-gray-100 flex items-center justify-center text-xs font-bold bg-primary text-white">
+                                    LS
+                                </div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-medium text-text-ink truncate">Lingkar Studi Pendidikan</p>
+<p class="text-xs text-text-muted truncate">Universitas Pendidikan Indonesia</p>
+</div>
+</div>
+</div>
+<div class="px-5 py-3 border-t border-border-subtle bg-background-light/30 flex justify-between items-center mt-auto">
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-1.5 text-text-muted group-hover:text-primary transition-colors" title="Endorsement">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span class="text-xs font-bold">32 Endorse</span>
+</div>
+<div class="flex items-center gap-1.5 text-text-muted">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+<span class="text-xs">1.5k</span>
+</div>
+</div>
+<button class="text-primary hover:bg-primary/10 p-1.5 rounded-sm transition-colors">
+<span class="material-symbols-outlined text-[20px]">download</span>
+</button>
+</div>
+</article>
+<article class="bg-surface border border-border-subtle rounded-sm shadow-sm hover:shadow-md hover:border-primary/30 transition-all flex flex-col group h-full">
+<div class="p-5 flex-grow">
+<div class="flex justify-between items-start mb-3">
+<span class="px-2 py-0.5 bg-red-50 text-alert text-[10px] font-bold uppercase tracking-wide border border-red-100 rounded-sm">Kesehatan</span>
+<span class="text-xs text-text-muted">01 Okt 2024</span>
+</div>
+<h3 class="font-serif font-bold text-lg text-text-ink mb-2 leading-tight group-hover:text-primary transition-colors">
+<a href="#">Pajak Minuman Berpemanis: Dampak Ekonomi vs Kesehatan Masyarakat</a>
+</h3>
+<p class="text-text-muted text-sm line-clamp-3 mb-4">
+                                Studi komparatif mengenai penerapan cukai MBDK di negara berkembang dan proyeksi penerimaan negara serta penurunan angka diabetes.
+                            </p>
+<div class="flex items-center gap-3 mt-auto">
+<div class="size-8 rounded-full overflow-hidden border border-border-subtle bg-gray-100">
+<img alt="Author Avatar 5" class="w-full h-full object-cover grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKbjjxKpS7R-1U3P4GumJ-yirQwvOyxg-7U9xWARs4K9vBkOKNh9X8hFzzeosO2A0TyUx4QSHj5sJC_sbKF2It2wdyEJLuhN0D0w0K0rYGe87DWykP08PcGSFOJGM5eZykG-c-tt0fWhZXiKInwVukmBXgPqlHbYymUBl2Je1lLnCWF8KmqW1XzBwBzeyDm_uLh5YKb1rUjKX44_nKtEDI8ophvHMvnlyndaDcZjb3kQYACVq3rlxpLw-mo3plWki1kVBL_ACFsrrq"/>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-medium text-text-ink truncate">Dr. Budi Santoso</p>
+<p class="text-xs text-text-muted truncate">Universitas Indonesia</p>
+</div>
+</div>
+</div>
+<div class="px-5 py-3 border-t border-border-subtle bg-background-light/30 flex justify-between items-center mt-auto">
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-1.5 text-text-muted group-hover:text-primary transition-colors" title="Endorsement">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span class="text-xs font-bold">112 Endorse</span>
+</div>
+<div class="flex items-center gap-1.5 text-text-muted">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+<span class="text-xs">5.4k</span>
+</div>
+</div>
+<button class="text-primary hover:bg-primary/10 p-1.5 rounded-sm transition-colors">
+<span class="material-symbols-outlined text-[20px]">download</span>
+</button>
+</div>
+</article>
+<article class="bg-surface border border-border-subtle rounded-sm shadow-sm hover:shadow-md hover:border-primary/30 transition-all flex flex-col group h-full">
+<div class="p-5 flex-grow">
+<div class="flex justify-between items-start mb-3">
+<span class="px-2 py-0.5 bg-orange-50 text-orange-700 text-[10px] font-bold uppercase tracking-wide border border-orange-100 rounded-sm">Energi</span>
+<span class="text-xs text-text-muted">28 Sep 2024</span>
+</div>
+<h3 class="font-serif font-bold text-lg text-text-ink mb-2 leading-tight group-hover:text-primary transition-colors">
+<a href="#">Transisi Berkeadilan: Subsidi Solar Rooftop untuk Rumah Tangga Menengah</a>
+</h3>
+<p class="text-text-muted text-sm line-clamp-3 mb-4">
+                                Analisis cost-benefit dari subsidi panel surya atap dan dampaknya terhadap pengurangan beban subsidi listrik negara dalam jangka panjang.
+                            </p>
+<div class="flex items-center gap-3 mt-auto">
+<div class="size-8 rounded-full overflow-hidden border border-border-subtle bg-gray-100 flex items-center justify-center text-xs font-bold bg-gray-700 text-white">
+                                    ITB
+                                </div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-medium text-text-ink truncate">Kelompok Studi Energi</p>
+<p class="text-xs text-text-muted truncate">Institut Teknologi Bandung</p>
+</div>
+</div>
+</div>
+<div class="px-5 py-3 border-t border-border-subtle bg-background-light/30 flex justify-between items-center mt-auto">
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-1.5 text-text-muted group-hover:text-primary transition-colors" title="Endorsement">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span class="text-xs font-bold">56 Endorse</span>
+</div>
+<div class="flex items-center gap-1.5 text-text-muted">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+<span class="text-xs">3.1k</span>
+</div>
+</div>
+<button class="text-primary hover:bg-primary/10 p-1.5 rounded-sm transition-colors">
+<span class="material-symbols-outlined text-[20px]">download</span>
+</button>
+</div>
+</article>
+</div>
+<div class="flex items-center justify-between border-t border-border-subtle pt-6">
+<button class="flex items-center gap-2 text-sm text-text-muted hover:text-text-ink transition-colors disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-[18px]">arrow_back</span>
+                        Sebelumnya
+                    </button>
+<div class="flex gap-1">
+<button class="size-8 flex items-center justify-center rounded-sm bg-primary text-white text-sm font-medium">1</button>
+<button class="size-8 flex items-center justify-center rounded-sm hover:bg-background-light text-text-muted text-sm font-medium transition-colors">2</button>
+<button class="size-8 flex items-center justify-center rounded-sm hover:bg-background-light text-text-muted text-sm font-medium transition-colors">3</button>
+<span class="size-8 flex items-center justify-center text-text-muted text-sm">...</span>
+<button class="size-8 flex items-center justify-center rounded-sm hover:bg-background-light text-text-muted text-sm font-medium transition-colors">12</button>
+</div>
+<button class="flex items-center gap-2 text-sm text-text-muted hover:text-text-ink transition-colors">
+                        Berikutnya
+                        <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</section>
+</div>
+</main>
+
+</body></html>

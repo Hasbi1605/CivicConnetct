@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Halaman Daftar CIVIC-Connect</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#1d5dec", // Bright blue from button
+              "primary-hover": "#164bbd",
+              "background-light": "#ffffff",
+              "background-dark": "#111827", // Dark gray almost black
+              "surface-dark": "#1f2937", // Lighter gray for inputs in dark mode
+              "text-secondary": "#6b7280", // Gray-500
+              "text-secondary-dark": "#9ca3af", // Gray-400
+              "input-border": "#e5e7eb", // Gray-200
+              "input-border-dark": "#374151", // Gray-700
+              "sidebar-blue": "#2e4a8e", // Approximation of the blue overlay
+            },
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+              display: ["Inter", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.5rem", // 8px default radius
+              xl: "0.75rem",
+              "2xl": "1rem",
+            },
+          },
+        },
+      };
+    </script>
+<style>::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #475569; 
+        }
+        .dark ::-webkit-scrollbar-thumb:hover {
+            background: #64748b; 
+        }.bg-overlay {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.95), rgba(30, 64, 175, 0.85)), url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: multiply;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-gray-900 bg-background-light dark:bg-background-dark dark:text-gray-100 min-h-screen flex flex-col md:flex-row">
+<div class="hidden md:flex w-full md:w-5/12 lg:w-1/2 bg-overlay relative flex-col justify-between p-8 lg:p-12 text-white">
+<div class="flex items-center gap-3 z-10">
+<div class="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white">verified_user</span>
+</div>
+<h1 class="text-xl font-bold tracking-wide">CIVICConnect</h1>
+</div>
+<div class="flex flex-col gap-6 z-10 my-auto pt-10">
+<h2 class="text-4xl lg:text-5xl font-bold leading-tight">
+                Cipta Intelektual<br/>
+                Visioner<br/>
+<span class="text-blue-200">Indonesia Cerdas</span>
+</h2>
+<p class="text-blue-100 text-lg leading-relaxed max-w-lg">
+                Platform digital terintegrasi untuk membentuk mahasiswa yang kritis, analitis, dan solutif dalam menghadapi era disrupsi informasi.
+            </p>
+</div>
+<div class="z-10 mt-auto pt-8">
+<p class="italic text-blue-200 font-light text-base lg:text-lg border-l-4 border-blue-400 pl-4">
+                "Mengubah paradigma gerakan mahasiswa dari reaktif-emosional menjadi solutif-ilmiah"
+            </p>
+</div>
+<div class="absolute inset-0 bg-blue-900 opacity-20 pointer-events-none"></div>
+</div>
+<div class="w-full md:w-7/12 lg:w-1/2 flex flex-col justify-center items-center p-6 sm:p-10 lg:p-16 overflow-y-auto">
+<div class="w-full max-w-md space-y-8">
+<div class="flex border-b border-gray-200 dark:border-gray-700 mb-8">
+<a class="pb-2 px-4 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 font-medium transition-colors" href="#">
+                    Masuk
+                </a>
+<button class="pb-2 px-4 border-b-2 border-primary text-primary font-medium">
+                    Daftar
+                </button>
+</div>
+<form action="#" class="space-y-5" method="POST">
+<div class="space-y-1">
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300" for="fullname">
+                        Nama Lengkap
+                    </label>
+<div class="relative rounded-md shadow-sm">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-gray-400 text-[20px]">person</span>
+</div>
+<input class="block w-full pl-10 sm:text-sm border-input-border dark:border-input-border-dark rounded-lg py-2.5 focus:ring-primary focus:border-primary bg-white dark:bg-surface-dark dark:text-white dark:placeholder-gray-500" id="fullname" name="fullname" placeholder="Ahmad Fauzi" required="" type="text"/>
+</div>
+</div>
+<div class="space-y-1">
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300" for="email">
+                        Email Universitas
+                    </label>
+<div class="relative rounded-md shadow-sm">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-gray-400 text-[20px]">mail</span>
+</div>
+<input class="block w-full pl-10 sm:text-sm border-input-border dark:border-input-border-dark rounded-lg py-2.5 focus:ring-primary focus:border-primary bg-white dark:bg-surface-dark dark:text-white dark:placeholder-gray-500" id="email" name="email" placeholder="nama@universitas.ac.id" required="" type="email"/>
+</div>
+</div>
+<div class="space-y-1">
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300" for="university">
+                        Universitas
+                    </label>
+<div class="relative rounded-md shadow-sm">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-gray-400 text-[20px]">account_balance</span>
+</div>
+<select class="block w-full pl-10 pr-10 sm:text-sm border-input-border dark:border-input-border-dark rounded-lg py-2.5 focus:ring-primary focus:border-primary bg-white dark:bg-surface-dark dark:text-white text-gray-900 appearance-none" id="university" name="university">
+<option disabled="" selected="" value="">Pilih Universitas</option>
+<option value="ui">Universitas Indonesia</option>
+<option value="ugm">Universitas Gadjah Mada</option>
+<option value="itb">Institut Teknologi Bandung</option>
+<option value="other">Lainnya</option>
+</select>
+<div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+<span class="material-icons text-gray-400 text-sm">expand_more</span>
+</div>
+</div>
+</div>
+<div class="space-y-1">
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300" for="password">
+                        Password
+                    </label>
+<div class="relative rounded-md shadow-sm">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-gray-400 text-[20px]">lock</span>
+</div>
+<input class="block w-full pl-10 pr-10 sm:text-sm border-input-border dark:border-input-border-dark rounded-lg py-2.5 focus:ring-primary focus:border-primary bg-white dark:bg-surface-dark dark:text-white dark:placeholder-gray-500" id="password" name="password" placeholder="Minimal 8 karakter" required="" type="password"/>
+<div class="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer">
+<span class="material-symbols-outlined text-gray-400 text-[20px] hover:text-gray-600 dark:hover:text-gray-300">visibility_off</span>
+</div>
+</div>
+</div>
+<div class="space-y-1">
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300" for="confirm_password">
+                        Konfirmasi Password
+                    </label>
+<div class="relative rounded-md shadow-sm">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-gray-400 text-[20px]">lock</span>
+</div>
+<input class="block w-full pl-10 pr-10 sm:text-sm border-input-border dark:border-input-border-dark rounded-lg py-2.5 focus:ring-primary focus:border-primary bg-white dark:bg-surface-dark dark:text-white dark:placeholder-gray-500" id="confirm_password" name="confirm_password" placeholder="Ulangi password" required="" type="password"/>
+<div class="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer">
+<span class="material-symbols-outlined text-gray-400 text-[20px] hover:text-gray-600 dark:hover:text-gray-300">visibility_off</span>
+</div>
+</div>
+</div>
+<div class="flex items-start">
+<div class="flex items-center h-5">
+<input class="h-4 w-4 text-primary border-gray-300 rounded focus:ring-primary dark:bg-surface-dark dark:border-gray-600" id="terms" name="terms" type="checkbox"/>
+</div>
+<div class="ml-2 text-sm">
+<label class="font-medium text-gray-700 dark:text-gray-300" for="terms">
+                            Saya setuju dengan <a class="text-primary hover:text-blue-700" href="#">Syarat &amp; Ketentuan</a> dan <a class="text-primary hover:text-blue-700" href="#">Kebijakan Privasi</a>
+</label>
+</div>
+</div>
+<div>
+<button class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-primary hover:bg-primary-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors duration-200" type="submit">
+                        Daftar Sekarang
+                    </button>
+</div>
+</form>
+<p class="text-center text-xs text-text-secondary dark:text-text-secondary-dark leading-relaxed px-4">
+                Dengan mendaftar, Anda akan menjadi bagian dari gerakan mahasiswa untuk melawan disrupsi informasi
+            </p>
+<div class="pt-8">
+<div class="text-center text-sm text-gray-500 dark:text-gray-400 mb-2">
+                    CIVIC-Connect © 2026
+                </div>
+<div class="flex justify-center space-x-6 text-sm text-gray-500 dark:text-gray-400">
+<a class="hover:text-gray-900 dark:hover:text-white transition-colors" href="#">Tentang</a>
+<a class="hover:text-gray-900 dark:hover:text-white transition-colors" href="#">Panduan</a>
+<a class="hover:text-gray-900 dark:hover:text-white transition-colors" href="#">Privasi</a>
+</div>
+</div>
+</div>
+</div>
+
+</body></html>

@@ -1,0 +1,119 @@
+@extends('layouts.fullwidth')
+
+@section('title', $brief->title . ' — Policy Lab')
+
+@section('content')
+<div class="pb-reader">
+    <div class="pb-reader-main">
+        <div class="pb-reader-header">
+            <a href="{{ route('policy-lab.index') }}" class="lab-back-link">
+                <span class="material-symbols-outlined">arrow_back</span> Kembali ke Policy Lab
+            </a>
+            <div class="pb-reader-badges">
+                <span class="pb-card-template">{{ $brief->templateLabel() }}</span>
+                @if($brief->labRoom)
+                <a href="{{ route('lab-room.show', $brief->labRoom) }}" class="pb-card-origin" title="Dari L.A.B Room">
+                    <span class="material-symbols-outlined" style="font-size:14px">science</span> {{ $brief->labRoom->title }}
+                </a>
+                @endif
+            </div>
+        </div>
+
+        <h1 class="pb-reader-title">{{ $brief->title }}</h1>
+
+        <div class="pb-reader-author">
+            <img src="{{ $brief->author->avatar_url }}" alt="" class="pb-reader-avatar">
+            <div>
+                <span class="pb-reader-name">{{ $brief->author->name }}</span>
+                <span class="pb-reader-date">{{ $brief->created_at->isoFormat('D MMMM Y') }}</span>
+            </div>
+        </div>
+
+        @if(session('success'))
+            <div class="alert alert-success">{{ session('success') }}</div>
+        @endif
+
+        {{-- Summary Section --}}
+        <div class="pb-reader-section pb-reader-highlight">
+            <h2>Ringkasan Eksekutif</h2>
+            <p>{{ $brief->summary }}</p>
+        </div>
+
+        {{-- Problem Section --}}
+        <div class="pb-reader-section">
+            <h2>Ringkasan Masalah</h2>
+            <p>{!! nl2br(e($brief->problem)) !!}</p>
+        </div>
+
+        {{-- Analysis Section --}}
+        <div class="pb-reader-section">
+            <h2>Analisis & Data</h2>
+            <p>{!! nl2br(e($brief->analysis)) !!}</p>
+        </div>
+
+        {{-- Recommendation Section --}}
+        <div class="pb-reader-section">
+            <h2>Rekomendasi Kebijakan</h2>
+            <p>{!! nl2br(e($brief->recommendation)) !!}</p>
+        </div>
+
+        {{-- Endorsement Bar --}}
+        @if($brief->isApproved())
+        <div class="pb-endorsement-bar">
+            <form action="{{ route('policy-lab.endorse', $brief) }}" method="POST" class="pb-endorse-form">
+                @csrf
+                <button type="submit" class="pb-endorse-btn {{ $brief->isEndorsedBy(Auth::id()) ? 'endorsed' : '' }}">
+                    <span class="material-symbols-outlined" style="font-size:20px">
+                        {{ $brief->isEndorsedBy(Auth::id()) ? 'thumb_up' : 'thumb_up_off_alt' }}
+                    </span>
+                    {{ $brief->isEndorsedBy(Auth::id()) ? 'Anda mendukung' : 'Dukung Brief Ini' }}
+                </button>
+                <span class="pb-endorse-count">{{ $brief->endorsementCount() }} endorsement</span>
+            </form>
+        </div>
+        @endif
+    </div>
+
+    {{-- Sidebar --}}
+    <aside class="pb-reader-sidebar">
+        <div class="pb-sidebar-card card">
+            <h4>Informasi Brief</h4>
+            <div class="pb-sidebar-item">
+                <span class="pb-sidebar-label">Status</span>
+                <span class="pb-my-status pb-status-{{ $brief->status }}">{{ $brief->statusLabel() }}</span>
+            </div>
+            <div class="pb-sidebar-item">
+                <span class="pb-sidebar-label">Template</span>
+                <span>{{ $brief->templateLabel() }}</span>
+            </div>
+            <div class="pb-sidebar-item">
+                <span class="pb-sidebar-label">Dibuat</span>
+                <span>{{ $brief->created_at->diffForHumans() }}</span>
+            </div>
+            @if($brief->reviewer)
+            <div class="pb-sidebar-item">
+                <span class="pb-sidebar-label">Direview oleh</span>
+                <span>{{ $brief->reviewer->name }}</span>
+            </div>
+            @endif
+            <div class="pb-sidebar-item">
+                <span class="pb-sidebar-label">Endorsement</span>
+                <span>{{ $brief->endorsementCount() }}</span>
+            </div>
+        </div>
+
+        @if($brief->user_id === Auth::id() && ($brief->isDraft() || $brief->isRejected()))
+        <a href="{{ route('policy-lab.edit', $brief) }}" class="btn-primary btn-full" style="margin-top:12px">
+            <span class="material-symbols-outlined" style="font-size:18px">edit</span> Edit Brief
+        </a>
+        @endif
+
+        @if($brief->isRejected() && $brief->rejection_reason)
+        <div class="pb-sidebar-card card" style="border-left:3px solid var(--danger);margin-top:12px">
+            <h4 style="color:var(--danger)">Alasan Penolakan</h4>
+            <p>{{ $brief->rejection_reason }}</p>
+        </div>
+        @endif
+    </aside>
+</div>
+@endsection
