@@ -62,5 +62,6 @@ php artisan migrate --force
 # ============================================================
 # 7. Start the Laravel application
 # ============================================================
-echo "✅ Application ready! Starting server on port 8080..."
-exec php artisan serve --host=0.0.0.0 --port=8080
+PORT=${PORT:-8080}
+echo "✅ Application ready! Starting server on port $PORT..."
+exec php artisan serve --host=0.0.0.0 --port=$PORT

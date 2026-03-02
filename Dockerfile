@@ -79,7 +79,7 @@ RUN mkdir -p /data \
 COPY docker/entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-# Expose port
-EXPOSE 8080
+# Expose port (Render uses 10000, Fly uses 8080)
+EXPOSE ${PORT:-8080}
 
 ENTRYPOINT ["/entrypoint.sh"]
