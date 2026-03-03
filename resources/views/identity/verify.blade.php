@@ -3,15 +3,23 @@
 @section('title', 'Verifikasi Identitas Akademik')
 
 @section('content')
-<div class="kya-wrapper">
-    {{-- Header --}}
+<div class="kya-page">
+    {{-- Page Header — matches plab-header pattern --}}
     <div class="kya-header">
-        <div class="kya-header-icon">
-            <span class="material-symbols-outlined">verified_user</span>
-        </div>
         <div>
-            <h2 class="kya-title">Verifikasi Identitas Akademik</h2>
-            <p class="kya-subtitle">Know Your Academician (KYA) — Pastikan identitas Anda untuk mengakses semua fitur</p>
+            <h2 class="kya-header-title">Verifikasi Identitas Akademik</h2>
+            <p class="kya-header-subtitle">Know Your Academician (KYA) — Pastikan identitas Anda untuk mengakses semua fitur</p>
+        </div>
+        <div class="kya-header-actions">
+            @if($user->isIdentityVerified())
+            <span class="kya-status-badge kya-badge-approved"><span class="material-symbols-outlined" style="font-size:18px">verified</span> Terverifikasi</span>
+            @elseif($user->isIdentityPending())
+            <span class="kya-status-badge kya-badge-pending"><span class="material-symbols-outlined" style="font-size:18px">hourglass_top</span> Menunggu Review</span>
+            @elseif($user->isIdentityRejected())
+            <span class="kya-status-badge kya-badge-rejected"><span class="material-symbols-outlined" style="font-size:18px">error</span> Ditolak</span>
+            @else
+            <span class="kya-status-badge kya-badge-unsubmitted"><span class="material-symbols-outlined" style="font-size:18px">pending</span> Belum Diverifikasi</span>
+            @endif
         </div>
     </div>
 
@@ -29,12 +37,14 @@
     {{-- State: APPROVED --}}
     {{-- ═══════════════════════════════════════════ --}}
     @if($user->isIdentityVerified())
-    <div class="kya-card kya-state-approved">
-        <div class="kya-state-icon approved">
+    <div class="kya-content-card">
+        <div class="kya-state-banner approved">
             <span class="material-symbols-outlined">check_circle</span>
+            <div>
+                <h3>Identitas Terverifikasi</h3>
+                <p>Identitas akademik Anda telah diverifikasi. Anda memiliki akses penuh ke semua fitur CIVIC-Connect.</p>
+            </div>
         </div>
-        <h3 class="kya-state-title">Identitas Terverifikasi</h3>
-        <p class="kya-state-desc">Identitas akademik Anda telah diverifikasi. Anda memiliki akses penuh ke semua fitur CIVIC-Connect.</p>
         <div class="kya-detail-grid">
             <div class="kya-detail-item">
                 <span class="kya-detail-label">Jenis Kartu</span>
@@ -53,21 +63,25 @@
                 <span class="kya-detail-value">{{ $user->role_badge }}</span>
             </div>
         </div>
-        <a href="{{ route('home') }}" class="kya-btn kya-btn-primary" style="margin-top:16px;">
-            <span class="material-symbols-outlined">home</span> Kembali ke Beranda
-        </a>
+        <div class="kya-card-actions">
+            <a href="{{ route('home') }}" class="kya-btn kya-btn-primary">
+                <span class="material-symbols-outlined">home</span> Kembali ke Beranda
+            </a>
+        </div>
     </div>
 
     {{-- ═══════════════════════════════════════════ --}}
     {{-- State: PENDING --}}
     {{-- ═══════════════════════════════════════════ --}}
     @elseif($user->isIdentityPending())
-    <div class="kya-card kya-state-pending">
-        <div class="kya-state-icon pending">
+    <div class="kya-content-card">
+        <div class="kya-state-banner pending">
             <span class="material-symbols-outlined">hourglass_top</span>
+            <div>
+                <h3>Menunggu Verifikasi</h3>
+                <p>Dokumen Anda sedang ditinjau oleh CIVIC Agent. Proses ini biasanya memerlukan waktu 1×24 jam.</p>
+            </div>
         </div>
-        <h3 class="kya-state-title">Menunggu Verifikasi</h3>
-        <p class="kya-state-desc">Dokumen Anda sedang ditinjau oleh CIVIC Agent. Proses ini biasanya memerlukan waktu 1×24 jam.</p>
         <div class="kya-detail-grid">
             <div class="kya-detail-item">
                 <span class="kya-detail-label">Jenis Kartu</span>
@@ -82,21 +96,25 @@
             <span class="material-symbols-outlined">info</span>
             <p>Selama menunggu, Anda masih dapat menjelajahi konten di CIVIC-Connect dalam mode baca. Anda akan mendapat notifikasi begitu verifikasi selesai.</p>
         </div>
-        <a href="{{ route('home') }}" class="kya-btn kya-btn-secondary" style="margin-top:16px;">
-            <span class="material-symbols-outlined">home</span> Jelajahi Platform
-        </a>
+        <div class="kya-card-actions">
+            <a href="{{ route('home') }}" class="kya-btn kya-btn-secondary">
+                <span class="material-symbols-outlined">home</span> Jelajahi Platform
+            </a>
+        </div>
     </div>
 
     {{-- ═══════════════════════════════════════════ --}}
     {{-- State: REJECTED — show reason + resubmit form --}}
     {{-- ═══════════════════════════════════════════ --}}
     @elseif($user->isIdentityRejected())
-    <div class="kya-card kya-state-rejected">
-        <div class="kya-state-icon rejected">
+    <div class="kya-content-card">
+        <div class="kya-state-banner rejected">
             <span class="material-symbols-outlined">cancel</span>
+            <div>
+                <h3>Verifikasi Ditolak</h3>
+                <p>Mohon maaf, verifikasi identitas Anda ditolak oleh CIVIC Agent.</p>
+            </div>
         </div>
-        <h3 class="kya-state-title">Verifikasi Ditolak</h3>
-        <p class="kya-state-desc">Mohon maaf, verifikasi identitas Anda ditolak oleh CIVIC Agent.</p>
 
         @if($user->identity_rejection_reason)
         <div class="kya-rejection-box">
@@ -104,8 +122,10 @@
             <p>{{ $user->identity_rejection_reason }}</p>
         </div>
         @endif
+    </div>
 
-        <p class="kya-state-desc" style="margin-top:16px;">Silakan upload ulang dokumen yang valid:</p>
+    <div class="kya-content-card">
+        <h3 class="kya-section-title">Upload Ulang Dokumen</h3>
 
         @if($errors->any())
             <div class="alert alert-danger">
@@ -173,27 +193,31 @@
     {{-- State: UNSUBMITTED — fresh upload form --}}
     {{-- ═══════════════════════════════════════════ --}}
     @else
-    <div class="kya-card kya-state-unsubmitted">
-        <div class="kya-why-section">
-            <h3>Mengapa Perlu Verifikasi?</h3>
-            <div class="kya-why-grid">
-                <div class="kya-why-item">
-                    <span class="material-symbols-outlined">shield</span>
-                    <strong>Cegah Buzzer</strong>
-                    <p>Mencegah infiltrasi akun palsu dan buzzer politik</p>
-                </div>
-                <div class="kya-why-item">
-                    <span class="material-symbols-outlined">verified</span>
-                    <strong>Kredibilitas</strong>
-                    <p>Menjamin setiap wacana berasal dari sivitas akademika</p>
-                </div>
-                <div class="kya-why-item">
-                    <span class="material-symbols-outlined">lock</span>
-                    <strong>Akses Fitur</strong>
-                    <p>Buka akses posting, voting, policy brief, & fact-check</p>
-                </div>
+    {{-- Why Verify section --}}
+    <div class="kya-content-card">
+        <h3 class="kya-section-title">Mengapa Perlu Verifikasi?</h3>
+        <div class="kya-why-grid">
+            <div class="kya-why-item">
+                <span class="material-symbols-outlined">shield</span>
+                <strong>Cegah Buzzer</strong>
+                <p>Mencegah infiltrasi akun palsu dan buzzer politik</p>
+            </div>
+            <div class="kya-why-item">
+                <span class="material-symbols-outlined">verified</span>
+                <strong>Kredibilitas</strong>
+                <p>Menjamin setiap wacana berasal dari sivitas akademika</p>
+            </div>
+            <div class="kya-why-item">
+                <span class="material-symbols-outlined">lock</span>
+                <strong>Akses Fitur</strong>
+                <p>Buka akses posting, voting, policy brief, & fact-check</p>
             </div>
         </div>
+    </div>
+
+    {{-- Upload Form --}}
+    <div class="kya-content-card">
+        <h3 class="kya-section-title">Upload Dokumen Identitas</h3>
 
         @if($errors->any())
             <div class="alert alert-danger">
