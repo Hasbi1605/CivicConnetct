@@ -15,6 +15,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'profile.complete' => \App\Http\Middleware\EnsureProfileComplete::class,
             'agent' => \App\Http\Middleware\EnsureUserIsAgent::class,
+            'identity.verified' => \App\Http\Middleware\EnsureIdentityVerified::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

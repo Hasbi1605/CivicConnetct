@@ -25,7 +25,6 @@ class ProfileController extends Controller
             'jurusan' => ['required', 'string', 'max:255'],
             'universitas' => ['required', 'string', 'max:255'],
             'bio' => ['nullable', 'string', 'max:1000'],
-            'role' => ['required', 'in:mahasiswa,mentor,agent'],
             'avatar' => ['nullable', 'image', 'max:2048'],
         ]);
 

@@ -65,18 +65,44 @@
                         </div>
                     </div>
 
-                    {{-- Role --}}
+                    {{-- Role (read-only — auto-assigned by KYA verification) --}}
                     <div class="se-field-group">
-                        <label for="role" class="se-field-label">Peran <span class="se-required">*</span></label>
-                        <div class="se-select-wrap">
-                            <select name="role" id="role" class="se-field-input se-field-select" required>
-                                <option value="mahasiswa" {{ old('role', $user->role) === 'mahasiswa' ? 'selected' : '' }}>Mahasiswa</option>
-                                <option value="mentor" {{ old('role', $user->role) === 'mentor' ? 'selected' : '' }}>Mentor (Dosen / Praktisi)</option>
-                                <option value="agent" {{ old('role', $user->role) === 'agent' ? 'selected' : '' }}>CIVIC Agent</option>
-                            </select>
-                            <span class="material-symbols-outlined se-select-icon">expand_more</span>
+                        <label class="se-field-label">Peran</label>
+                        <input type="text" class="se-field-input se-field-readonly" value="{{ $user->role_badge }}" readonly>
+                        <p class="se-field-hint">
+                            @if($user->isIdentityVerified())
+                                Role ditentukan otomatis berdasarkan verifikasi identitas ({{ $user->identity_card_label }}).
+                            @elseif($user->isAnonim())
+                                Anda masuk sebagai pengunjung anonim.
+                            @elseif($user->isAgent())
+                                Anda adalah CIVIC Agent.
+                            @else
+                                Role akan ditentukan otomatis setelah <a href="{{ route('identity.verify') }}" style="color:#2563EB;text-decoration:underline;">verifikasi identitas</a>.
+                            @endif
+                        </p>
+                    </div>
+
+                    {{-- Identity Verification Status --}}
+                    @if(!$user->isAnonim() && !$user->isAgent())
+                    <div class="se-field-group">
+                        <label class="se-field-label">Status Verifikasi Identitas</label>
+                        <div class="se-verification-status se-status-{{ $user->identity_status ?? 'unsubmitted' }}">
+                            @if($user->isIdentityVerified())
+                                <span class="material-symbols-outlined">check_circle</span>
+                                <span>Terverifikasi — {{ $user->identity_verified_at->format('d M Y') }}</span>
+                            @elseif($user->isIdentityPending())
+                                <span class="material-symbols-outlined">hourglass_top</span>
+                                <span>Menunggu verifikasi CIVIC Agent</span>
+                            @elseif($user->isIdentityRejected())
+                                <span class="material-symbols-outlined">cancel</span>
+                                <span>Ditolak — <a href="{{ route('identity.verify') }}" style="color:#2563EB;text-decoration:underline;">Upload ulang</a></span>
+                            @else
+                                <span class="material-symbols-outlined">info</span>
+                                <span>Belum diverifikasi — <a href="{{ route('identity.verify') }}" style="color:#2563EB;text-decoration:underline;">Verifikasi sekarang</a></span>
+                            @endif
                         </div>
                     </div>
+                    @endif
 
                     {{-- Bio --}}
                     <div class="se-field-group">

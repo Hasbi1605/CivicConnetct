@@ -29,6 +29,13 @@ class User extends Authenticatable
         'role',
         'avatar',
         'is_profile_complete',
+        'identity_card_type',
+        'identity_card_image',
+        'nim_nidn',
+        'identity_status',
+        'identity_rejection_reason',
+        'identity_verified_at',
+        'identity_verified_by',
     ];
 
     /**
@@ -52,6 +59,7 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'is_profile_complete' => 'boolean',
+            'identity_verified_at' => 'datetime',
         ];
     }
 
@@ -117,6 +125,58 @@ class User extends Authenticatable
     }
 
     /**
+     * Check if user's identity has been verified (KYA approved).
+     */
+    public function isIdentityVerified(): bool
+    {
+        return $this->identity_status === 'approved';
+    }
+
+    /**
+     * Check if user's identity verification is pending.
+     */
+    public function isIdentityPending(): bool
+    {
+        return $this->identity_status === 'pending';
+    }
+
+    /**
+     * Check if user's identity verification was rejected.
+     */
+    public function isIdentityRejected(): bool
+    {
+        return $this->identity_status === 'rejected';
+    }
+
+    /**
+     * Check if user has not yet submitted identity verification.
+     */
+    public function isIdentityUnsubmitted(): bool
+    {
+        return $this->identity_status === 'unsubmitted' || $this->identity_status === null;
+    }
+
+    /**
+     * The CIVIC Agent who verified this user's identity.
+     */
+    public function identityVerifier()
+    {
+        return $this->belongsTo(User::class, 'identity_verified_by');
+    }
+
+    /**
+     * Get the identity card type label.
+     */
+    public function getIdentityCardLabelAttribute(): string
+    {
+        return match ($this->identity_card_type) {
+            'ktm' => 'Kartu Tanda Mahasiswa',
+            'ktd' => 'Kartu Tanda Dosen',
+            default => '-',
+        };
+    }
+
+    /**
      * Get unread notifications count.
      */
     public function unreadNotificationsCount(): int
@@ -147,10 +207,23 @@ class User extends Authenticatable
     public function getRoleBadgeAttribute(): string
     {
         return match ($this->role) {
-            'mentor' => 'Mentor',
+            'mentor' => 'Dosen',
             'agent' => 'Agent',
             'anonim' => 'Pengunjung',
             default => 'Mahasiswa',
+        };
+    }
+
+    /**
+     * Get the identity verification status badge.
+     */
+    public function getIdentityStatusBadgeAttribute(): string
+    {
+        return match ($this->identity_status) {
+            'pending' => 'Menunggu Verifikasi',
+            'approved' => 'Terverifikasi',
+            'rejected' => 'Ditolak',
+            default => 'Belum Diverifikasi',
         };
     }
 }

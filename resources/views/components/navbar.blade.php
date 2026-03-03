@@ -75,6 +75,9 @@
                     @if(!Auth::user()->isAnonim())
                     <a href="{{ route('profile') }}">Profil Saya</a>
                     <a href="{{ route('profile.edit') }}">Edit Profil</a>
+                    @if(!Auth::user()->isIdentityVerified() && !Auth::user()->isAgent())
+                    <a href="{{ route('identity.verify') }}">Verifikasi Identitas</a>
+                    @endif
                     @if(Auth::user()->isAgent())
                     <a href="{{ route('moderation.index') }}">Moderasi</a>
                     @endif
@@ -91,6 +94,29 @@
         </div>
     </div>
 </header>
+
+{{-- Identity Verification Banner --}}
+@auth
+@if(!Auth::user()->isAnonim() && !Auth::user()->isAgent() && !Auth::user()->isIdentityVerified() && Auth::user()->is_profile_complete)
+<div class="kya-banner">
+    <div class="kya-banner-inner">
+        <span class="material-symbols-outlined">verified_user</span>
+        <span class="kya-banner-text">
+            @if(Auth::user()->isIdentityPending())
+                Verifikasi identitas Anda sedang ditinjau oleh CIVIC Agent.
+            @elseif(Auth::user()->isIdentityRejected())
+                Verifikasi identitas Anda ditolak. <a href="{{ route('identity.verify') }}">Upload ulang dokumen</a>.
+            @else
+                Verifikasi identitas akademik Anda untuk mengakses semua fitur.
+            @endif
+        </span>
+        @if(!Auth::user()->isIdentityPending())
+        <a href="{{ route('identity.verify') }}" class="kya-banner-btn">Verifikasi Sekarang</a>
+        @endif
+    </div>
+</div>
+@endif
+@endauth
 
 @auth
 @push('scripts')

@@ -7,6 +7,7 @@ use App\Models\HoaxVerdict;
 use App\Models\Notification;
 use App\Models\PolicyBrief;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -59,7 +60,11 @@ class ModerationController extends Controller
             ->latest()
             ->get();
 
-        return view('moderation.index', compact('pendingPosts', 'recentReviewed', 'reportedPosts', 'pendingBriefs', 'pendingClaims', 'pendingVerdicts', 'stats'));
+        $pendingIdentities = User::where('identity_status', 'pending')
+            ->latest('updated_at')
+            ->get();
+
+        return view('moderation.index', compact('pendingPosts', 'recentReviewed', 'reportedPosts', 'pendingBriefs', 'pendingClaims', 'pendingVerdicts', 'pendingIdentities', 'stats'));
     }
 
     /**
@@ -291,6 +296,76 @@ class ModerationController extends Controller
 
         return response()->json([
             'message' => 'Putusan berhasil ditolak.',
+            'status' => 'rejected',
+        ]);
+    }
+
+    // ══════════════════════════════════════════
+    //  Identity Verification Moderation (KYA)
+    // ══════════════════════════════════════════
+
+    /**
+     * Approve a user's identity — auto-assign role based on card type.
+     */
+    public function approveIdentity(User $user)
+    {
+        if ($user->identity_status !== 'pending') {
+            return response()->json(['message' => 'Verifikasi identitas ini sudah ditinjau.'], 422);
+        }
+
+        // Auto-assign role based on card type: KTM → mahasiswa, KTD → mentor (dosen)
+        $role = $user->identity_card_type === 'ktd' ? 'mentor' : 'mahasiswa';
+
+        $user->update([
+            'identity_status' => 'approved',
+            'identity_verified_at' => now(),
+            'identity_verified_by' => Auth::id(),
+            'identity_rejection_reason' => null,
+            'role' => $role,
+        ]);
+
+        Notification::create([
+            'user_id' => $user->id,
+            'type' => 'identity_approved',
+            'title' => '✅ Identitas Terverifikasi',
+            'message' => 'Identitas akademik Anda telah diverifikasi oleh CIVIC Agent. Anda sekarang memiliki akses penuh ke semua fitur platform.',
+        ]);
+
+        return response()->json([
+            'message' => 'Identitas ' . $user->name . ' berhasil diverifikasi sebagai ' . ucfirst($role) . '.',
+            'status' => 'approved',
+        ]);
+    }
+
+    /**
+     * Reject a user's identity verification.
+     */
+    public function rejectIdentity(Request $request, User $user)
+    {
+        if ($user->identity_status !== 'pending') {
+            return response()->json(['message' => 'Verifikasi identitas ini sudah ditinjau.'], 422);
+        }
+
+        $request->validate([
+            'rejection_reason' => ['required', 'string', 'max:500'],
+        ]);
+
+        $user->update([
+            'identity_status' => 'rejected',
+            'identity_rejection_reason' => $request->rejection_reason,
+            'identity_verified_at' => null,
+            'identity_verified_by' => null,
+        ]);
+
+        Notification::create([
+            'user_id' => $user->id,
+            'type' => 'identity_rejected',
+            'title' => '⚠️ Verifikasi Identitas Ditolak',
+            'message' => 'Verifikasi identitas Anda ditolak. Alasan: ' . $request->rejection_reason . '. Silakan upload ulang dokumen yang valid.',
+        ]);
+
+        return response()->json([
+            'message' => 'Verifikasi identitas ' . $user->name . ' ditolak.',
             'status' => 'rejected',
         ]);
     }

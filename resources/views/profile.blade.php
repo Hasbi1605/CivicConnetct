@@ -14,7 +14,7 @@
         <div class="sp-cover">
             <div class="sp-cover-overlay"></div>
             <div class="sp-cover-pattern"></div>
-            @if($user->email_verified_at)
+            @if($user->isIdentityVerified())
             <span class="sp-verified-flag">
                 <span class="material-symbols-outlined">shield</span> Terverifikasi
             </span>
@@ -27,7 +27,7 @@
                 {{-- Avatar --}}
                 <div class="sp-avatar-wrap">
                     <img src="{{ $user->avatar_url }}" alt="{{ $user->name }}" class="sp-avatar-img">
-                    @if($user->email_verified_at)
+                    @if($user->isIdentityVerified())
                     <div class="sp-avatar-check" title="Identitas Terverifikasi">
                         <span class="material-symbols-outlined">check_circle</span>
                     </div>
@@ -56,11 +56,27 @@
                                     <span class="material-symbols-outlined">admin_panel_settings</span> CIVIC Agent
                                 </span>
                                 @endif
+                                @if($user->isIdentityVerified())
+                                <span class="sp-badge sp-badge-verified">
+                                    <span class="material-symbols-outlined">verified</span> KYA Verified
+                                </span>
+                                @endif
                             </div>
+                            @if($user->nim_nidn)
+                            <div class="sp-nim-display">
+                                <span class="material-symbols-outlined" style="font-size:14px">badge</span>
+                                {{ $user->identity_card_type === 'ktd' ? 'NIDN' : 'NIM' }}: {{ $user->nim_nidn }}
+                            </div>
+                            @endif
                         </div>
 
                         {{-- Actions --}}
                         <div class="sp-actions">
+                            @if(!$user->isIdentityVerified() && !$user->isAnonim())
+                            <a href="{{ route('identity.verify') }}" class="sp-btn sp-btn-verify">
+                                <span class="material-symbols-outlined">verified_user</span> Verifikasi Identitas
+                            </a>
+                            @endif
                             <a href="{{ route('profile.edit') }}" class="sp-btn sp-btn-primary">
                                 <span class="material-symbols-outlined">edit</span> Edit Profil
                             </a>

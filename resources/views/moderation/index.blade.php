@@ -5,7 +5,7 @@
 @section('content')
 
 @php
-    $totalPending = $pendingPosts->count() + ($pendingBriefs->count() ?? 0) + ($pendingClaims->count() ?? 0) + ($pendingVerdicts->count() ?? 0);
+    $totalPending = $pendingPosts->count() + ($pendingBriefs->count() ?? 0) + ($pendingClaims->count() ?? 0) + ($pendingVerdicts->count() ?? 0) + ($pendingIdentities->count() ?? 0);
     $totalAll = $totalPending + $reportedPosts->count();
 @endphp
 
@@ -62,6 +62,10 @@
             <button class="mod-tab" onclick="switchModTab('putusan', this)" data-tab="putusan">
                 Putusan Hoaks
                 @if(isset($pendingVerdicts) && $pendingVerdicts->count() > 0)<span class="mod-tab-badge">{{ $pendingVerdicts->count() }}</span>@endif
+            </button>
+            <button class="mod-tab" onclick="switchModTab('identitas', this)" data-tab="identitas">
+                Verifikasi Identitas
+                @if(isset($pendingIdentities) && $pendingIdentities->count() > 0)<span class="mod-tab-badge">{{ $pendingIdentities->count() }}</span>@endif
             </button>
         </nav>
     </div>
@@ -341,6 +345,81 @@
                 @endif
             </div>
 
+            {{-- ═══════════════════════════════════════════ --}}
+            {{-- Section: Identity Verification Queue (KYA) --}}
+            {{-- ═══════════════════════════════════════════ --}}
+            <div class="moderation-section" data-category="identitas">
+                <div class="mod-section-header">
+                    <span class="material-symbols-outlined">verified_user</span>
+                    Verifikasi Identitas Menunggu Review ({{ isset($pendingIdentities) ? $pendingIdentities->count() : 0 }})
+                </div>
+
+                @if(isset($pendingIdentities) && $pendingIdentities->count() > 0)
+                @foreach($pendingIdentities as $identity)
+                <div class="mod-card" id="mod-identity-{{ $identity->id }}">
+                    <div class="mod-card-header">
+                        <div class="mod-card-user">
+                            <div class="mod-avatar">{{ strtoupper(substr($identity->name, 0, 1)) }}{{ strtoupper(substr(explode(' ', $identity->name)[1] ?? '', 0, 1)) }}</div>
+                            <div>
+                                <div class="mod-user-name">{{ $identity->name }}</div>
+                                <div class="mod-user-detail">{{ $identity->jurusan }} @ {{ $identity->universitas }}</div>
+                                <div class="mod-user-time">{{ $identity->updated_at->diffForHumans() }}</div>
+                            </div>
+                        </div>
+                        <span class="mod-type-badge identity">{{ strtoupper($identity->identity_card_type) }}</span>
+                    </div>
+
+                    <div class="mod-identity-details">
+                        <div class="mod-identity-info">
+                            <div class="mod-identity-field">
+                                <span class="mod-identity-label">{{ $identity->identity_card_type === 'ktd' ? 'NIDN' : 'NIM' }}</span>
+                                <span class="mod-identity-value">{{ $identity->nim_nidn }}</span>
+                            </div>
+                            <div class="mod-identity-field">
+                                <span class="mod-identity-label">Jenis Kartu</span>
+                                <span class="mod-identity-value">{{ $identity->identity_card_label }}</span>
+                            </div>
+                            <div class="mod-identity-field">
+                                <span class="mod-identity-label">Email</span>
+                                <span class="mod-identity-value">{{ $identity->email }}</span>
+                            </div>
+                            <div class="mod-identity-field">
+                                <span class="mod-identity-label">Role Saat Ini</span>
+                                <span class="mod-identity-value">{{ $identity->role_badge }}</span>
+                            </div>
+                        </div>
+                        @if($identity->identity_card_image)
+                        <div class="mod-identity-card-preview">
+                            <a href="{{ route('identity.card', $identity) }}" target="_blank" class="mod-identity-card-link">
+                                <img src="{{ route('identity.card', $identity) }}" alt="{{ strtoupper($identity->identity_card_type) }}" class="mod-identity-card-img">
+                                <span class="mod-identity-card-overlay">
+                                    <span class="material-symbols-outlined">zoom_in</span> Lihat Dokumen
+                                </span>
+                            </a>
+                        </div>
+                        @endif
+                    </div>
+
+                    <div class="mod-card-actions">
+                        <button class="mod-btn-approve verified" onclick="approveIdentity({{ $identity->id }})">
+                            <span class="material-symbols-outlined">check</span>
+                            Verifikasi
+                        </button>
+                        <button class="mod-btn-reject" onclick="openRejectModal({{ $identity->id }}, 'identity')">
+                            <span class="material-symbols-outlined">close</span>
+                            Tolak
+                        </button>
+                    </div>
+                </div>
+                @endforeach
+                @else
+                <div class="mod-empty-state">
+                    <span class="material-symbols-outlined">check_circle</span>
+                    <p>Tidak ada permintaan verifikasi identitas.</p>
+                </div>
+                @endif
+            </div>
+
         </div>{{-- end .mod-content-main --}}
 
         {{-- Right Preview Panel (Stitch Screen 1 style) --}}
@@ -510,6 +589,7 @@ function openRejectModal(itemId, type) {
     const titles = {
         'post': 'Tolak Postingan',
         'brief': 'Tolak Policy Brief',
+        'identity': 'Tolak Verifikasi Identitas',
     };
     document.getElementById('reject-modal-title').textContent = titles[type] || 'Tolak Konten';
     document.getElementById('reject-modal').style.display = 'flex';
@@ -538,6 +618,9 @@ async function submitReject() {
     } else if (type === 'brief') {
         url = `/moderation/briefs/${itemId}/reject`;
         cardId = `mod-brief-${itemId}`;
+    } else if (type === 'identity') {
+        url = `/moderation/identities/${itemId}/reject`;
+        cardId = `mod-identity-${itemId}`;
     }
 
     try {
@@ -659,6 +742,26 @@ async function rejectVerdict(verdictId) {
         }
     } catch (err) {
         showToast('Gagal menolak putusan', 'error');
+    }
+}
+
+// ===== Identity Verification Moderation =====
+async function approveIdentity(userId) {
+    if (!confirm('Verifikasi identitas pengguna ini?')) return;
+    try {
+        const res = await fetch(`/moderation/identities/${userId}/approve`, {
+            method: 'POST',
+            headers: { 'X-CSRF-TOKEN': csrfToken, 'Accept': 'application/json' },
+        });
+        const data = await res.json();
+        if (res.ok) {
+            removeCard(`mod-identity-${userId}`);
+            showToast(data.message, 'success');
+        } else {
+            showToast(data.message || 'Gagal memverifikasi identitas', 'error');
+        }
+    } catch (err) {
+        showToast('Gagal memverifikasi identitas', 'error');
     }
 }
 </script>
