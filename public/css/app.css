@@ -10147,6 +10147,10 @@ nav .pagination a:hover {
     padding: 10px 0;
     position: relative;
     z-index: 90;
+    margin-top: 64px; /* push below fixed header */
+}
+.kya-banner + .app-feature {
+    margin-top: 0; /* remove duplicate margin when banner is showing */
 }
 .kya-banner-inner {
     max-width: 1200px;
@@ -10644,19 +10648,106 @@ nav .pagination a:hover {
     opacity: 1;
 }
 
-/* Responsive */
-@media (max-width: 640px) {
-    .kya-why-grid {
-        grid-template-columns: 1fr;
+/* Responsive — tablet */
+@media (max-width: 768px) {
+    .kya-wrapper {
+        max-width: 100%;
+        padding: 16px 12px 80px; /* bottom padding for mobile nav */
     }
-    .kya-radio-group {
-        grid-template-columns: 1fr;
+    .kya-header {
+        gap: 12px;
+        margin-bottom: 16px;
     }
-    .kya-detail-grid {
-        grid-template-columns: 1fr;
+    .kya-header-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+    }
+    .kya-header-icon .material-symbols-outlined {
+        font-size: 20px;
+    }
+    .kya-title {
+        font-size: 17px;
+    }
+    .kya-subtitle {
+        font-size: 12px;
     }
     .kya-card {
-        padding: 20px;
+        padding: 20px 16px;
+        border-radius: 10px;
+    }
+    .kya-state-icon {
+        width: 52px;
+        height: 52px;
+    }
+    .kya-state-icon .material-symbols-outlined {
+        font-size: 26px;
+    }
+    .kya-state-title {
+        font-size: 16px;
+    }
+    .kya-state-desc {
+        font-size: 13px;
+    }
+    .kya-why-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    .kya-why-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-align: left;
+        padding: 12px;
+    }
+    .kya-why-item .material-symbols-outlined {
+        font-size: 24px;
+        margin-bottom: 0;
+        flex-shrink: 0;
+    }
+    .kya-why-item strong {
+        margin-bottom: 2px;
+    }
+    .kya-radio-group {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+    .kya-radio-card {
+        padding: 12px 8px;
+    }
+    .kya-radio-card .material-symbols-outlined {
+        font-size: 24px;
+    }
+    .kya-radio-card strong {
+        font-size: 13px;
+    }
+    .kya-radio-card small {
+        font-size: 10px;
+    }
+    .kya-detail-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        padding: 12px;
+    }
+    .kya-upload-area {
+        padding: 24px 16px;
+    }
+    .kya-upload-placeholder .material-symbols-outlined {
+        font-size: 30px;
+    }
+    .kya-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 12px 16px;
+    }
+    .kya-info-box {
+        padding: 10px 12px;
+    }
+    .kya-info-box p {
+        font-size: 12px;
+    }
+    .kya-rejection-box {
+        padding: 10px 12px;
     }
     .mod-identity-details {
         flex-direction: column;
@@ -10667,12 +10758,47 @@ nav .pagination a:hover {
     .mod-identity-card-img {
         height: 180px;
     }
+    .kya-banner {
+        padding: 8px 0;
+    }
     .kya-banner-inner {
         flex-wrap: wrap;
+        font-size: 12px;
+        gap: 6px;
+        padding: 0 12px;
+    }
+    .kya-banner-inner .material-symbols-outlined {
+        font-size: 16px;
     }
     .kya-banner-btn {
         width: 100%;
         text-align: center;
-        margin-top: 6px;
+        margin-top: 4px;
+        padding: 8px 14px;
+        font-size: 12px;
+    }
+}
+
+/* Responsive — small mobile */
+@media (max-width: 480px) {
+    .kya-wrapper {
+        padding: 12px 10px 80px;
+    }
+    .kya-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 8px;
+    }
+    .kya-title {
+        font-size: 16px;
+    }
+    .kya-radio-group {
+        grid-template-columns: 1fr;
+    }
+    .kya-detail-grid {
+        grid-template-columns: 1fr;
+    }
+    .kya-card {
+        padding: 16px 12px;
     }
 }
