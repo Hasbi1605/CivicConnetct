@@ -110,9 +110,9 @@
             font-size: 20px; color: #9ca3af; pointer-events: none;
         }
         .auth-input-wrap .toggle-pw {
-            position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+            position: absolute; right: 12px; left: auto; top: 50%; transform: translateY(-50%);
             font-size: 20px; color: #9ca3af; cursor: pointer; pointer-events: auto;
-            user-select: none;
+            user-select: none; width: 24px; text-align: center;
         }
         .auth-input-wrap .toggle-pw:hover { color: #6b7280; }
         .auth-input {
