@@ -72,7 +72,7 @@
 
                         {{-- Actions --}}
                         <div class="sp-actions">
-                            @if(!$user->isIdentityVerified() && !$user->isAnonim())
+                            @if(!$user->isIdentityVerified() && !$user->isAnonim() && !$user->isAgent())
                             <a href="{{ route('identity.verify') }}" class="sp-btn sp-btn-verify">
                                 <span class="material-symbols-outlined">verified_user</span> Verifikasi Identitas
                             </a>
